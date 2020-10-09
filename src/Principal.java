@@ -10,12 +10,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.script.Invocable;
-import javax.script.ScriptEngine;
-import javax.script.ScriptEngineManager;
-import javax.script.ScriptException;
+import java.util.ArrayList;
+import java.util.List;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -25,7 +21,7 @@ import javax.script.ScriptException;
 
 /**
  *
- * @author usuario
+ * @author csalfonsol
  */
 public class Principal extends javax.swing.JFrame {
 
@@ -119,14 +115,9 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_formatActionPerformed
-        
-        
-        /* APLICAR FORMATO REQUERIDO A PASAJE BIBLICO */
-               
-        result.setText(formatText(original.getText()));                
-
-        
-       
+                
+        /* APLICAR FORMATO REQUERIDO A PASAJE BIBLICO */               
+        result.setText(formatText(original.getText()));                            
     }//GEN-LAST:event_formatActionPerformed
 
     private void copyClipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_copyClipActionPerformed
@@ -267,7 +258,148 @@ public class Principal extends javax.swing.JFrame {
     }
     
     
+    /*  
+        = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+        Cada libro es una lista de listas              
+        Cada lista dentro del libro será un capitulo
+        Y cada elemento dentro de cada lista-capitulo sera un versiculo     
+        = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
+    */
+    
+    
+    // Metodo que recibe el nombre de un libro, un capitulo y versiculo.
+    // Retorna el texto biblico correspondiente
+    public static String printBiblicText(String bookName, String chapter, String verse) {
+
+        // Variable donde se guardara el texto biblico final
+        String text;
+        
+        // = = = OBTENER EL LIBRO = = =
+        File folder = new File("src/assets/");    
+        String pathFile = extractBook(bookName);
+
+        System.out.println(pathFile);
+        
+        File file = new File(pathFile); 
+        BufferedReader br = null; 
+        try {br = new BufferedReader(new FileReader(file));} 
+        catch (FileNotFoundException ex) {System.out.println("Error leyendo el archivo");}   
+        
+        
+        // = = = OBTENER EL CAPITULO = = =                                                        
+        String linea; 
+        try {
+            // iteramos hasta encontrar la linea con el capitulo y el versiculo solicitados
+            while ((linea = br.readLine()) != null){                                                 
+               
+                System.out.println(extractChapter(linea) + " " + extractVerse(linea));
+                
+                if (extractChapter(linea).equals(chapter) && extractVerse(linea).equals(verse)){
+                    return getBiblicVerse(linea);
+                }
+                                                     
+            }
+        } catch (IOException ex) {System.out.println("Error leyendo la linea");}
+        
+        return "TEXTO BIBLICO NO ENCONTRADO";
+        
+        /* List<List<String>> book = new ArrayList<>();
+                                                
+        String linea; 
+        int conteo = 0;
+        String currentChapter = "0";     
+
+        try {
+            // iteramos mientras hayan lineas en el archivo
+            while ((linea = br.readLine()) != null){                                                 
+
+                // Miramos si el capitulo actual ha cambiado                   
+                if (!extractChapter(linea).equals(currentChapter)){
+                    // Creamos un nuevo capitulo
+                    book.add(new ArrayList<>());
+                    currentChapter = extractChapter(linea);
+                }
+
+                // Se agrega el versiculo en el libro, en el capitulo (sublista) correspondiente
+                book.get(Integer.parseInt(currentChapter)-1).add(extractVerse(linea));                        
+            }
+        } catch (IOException ex) {System.out.println("Error leyendo la linea");}
+        */              
+    }
+    
+    // DEPRECATED
+    public static String printVerse(List<List<String>> book, int chapter, int verse) {
+
+        // Debemos restarle 1 al index de capitulo y 1 al index del versiculo
+        String result = book.get(chapter-1).get(verse-1);   
+        
+        return result;
+    }
+    
+     // Metodo para obtener el texto biblico de una línea del archivo de origen
+    public static String getBiblicVerse(String line) {
+        
+        String text;
+
+        // Removemos el pre-texto inutil
+        text = line.substring(line.indexOf("'")+1,line.length());
+
+        // Removemos el post-texto inutil
+        text = text.substring(0,text.indexOf("'"));
+
+        return text;
+
+    }
   
+    // Metodo para obtener el versiculo de una línea del archivo de origen
+    public static String extractVerse(String line) {
+        
+        String verse;
+
+        // Removemos el id del libro
+        verse = line.substring(line.indexOf(",")+1,line.length());
+        // Removemos el capitulo del libro y el espacio entre este y el versiculo (+2)
+        verse = verse.substring(verse.indexOf(",")+2,verse.length());
+
+        // Removemos el texto biblico (solo buscamos el versiculo
+        verse = verse.substring(0,verse.indexOf(","));
+
+        return verse;
+
+    }
+    
+    // Metodo que busca el capitulo de una linea del archivo de origen
+    public static String extractChapter(String line) {
+        
+        String chapter;
+
+        // Removemos el pre-texto inutil
+        chapter = line.substring(line.indexOf(",")+2,line.length());
+
+        // Removemos el post-texto inutil
+        chapter = chapter.substring(0,chapter.indexOf(","));
+
+        return chapter;
+
+    }
+    
+    
+    // Metodo que busca en el directorio assets, el libro con el nombre dado
+    // Retorna el path para acceder al archivo del libro
+    public static String extractBook(String name) {                
+
+        File folder = new File("src/assets/");    
+        String pathFile = "src/assets/";
+        
+        for (int i = 0; i < folder.listFiles().length; i++) {
+            if (folder.listFiles()[i].getName().contains(name))
+                return pathFile += folder.listFiles()[i].getName();            
+        }
+        return null;
+
+    }
+
+    
     
     
     /**
@@ -300,6 +432,33 @@ public class Principal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                                                              
+                
+                /*
+                
+                    ENTRADAS PRINCIPALES DEL USUARIO:
+                
+                    LIBRO
+                    CAPITULO
+                    VERSICULOS
+                
+                */
+                
+                   
+                
+                
+                System.out.println(printBiblicText("salmos", "150", "6"));
+                
+                
+                
+               
+                // System.out.println(printVerse(book, 1, 5)); 
+                // System.out.println(book.size()); 
+                
+                
+                // System.out.println(printVerse(tito, 119, 100));                
+                
+                
                 //new Principal().setVisible(true);                              
                 
                 /* Parametros de ejemplo 
@@ -313,51 +472,7 @@ public class Principal extends javax.swing.JFrame {
                 } catch (Exception ex) {
                     System.out.println("Ocurrio un error haciendo la peticion: ");
                     ex.printStackTrace();
-                }
-               
-                
-                ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
-                Object resultado = null;
-                try {
-                    resultado = engine.eval(new FileReader("src/assets/judas.js"));                    
-                } catch (FileNotFoundException ex) {
-                    System.out.println("Error de file not found");      
-                    System.out.println(ex.getMessage());
-                } catch (ScriptException ex) {
-                    System.out.println("Error de Script exception");    
-                    System.out.println(ex.getMessage());
-                }
-
-                // Invocable invocable = (Invocable) engine;
-                
-                System.out.println(resultado.getClass());
-                
-
-                //Object result = invocable.invokeFunction("fun1", "Peter Parker");
-                //System.out.println(result);
-                //System.out.println(result.getClass());
-                 */
-                
-                File file = new File("src/assets/tito.txt"); 
-  
-                BufferedReader br = null; 
-                try {
-                    br = new BufferedReader(new FileReader(file));
-                } catch (FileNotFoundException ex) {
-                    Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
-                String st; 
-                int conteo = 0;
-                try {
-                    while ((st = br.readLine()) != null && conteo < 3){   
-                        System.out.println(st);
-                        conteo++;
-                    }
-                } catch (IOException ex) {
-                    Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                
+                }*/
             }
         });
     }
