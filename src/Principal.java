@@ -3,9 +3,11 @@ import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -13,6 +15,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JToggleButton;
 
 /*
@@ -40,6 +43,9 @@ public class Principal extends javax.swing.JFrame {
         
     // Marca de la versión (Por ahora solo Reina valera)
     static String biblicVersion = "Reina-Valera 1960";
+    
+    // Carpeta donde se crean los archivos de salida
+    String ruta = "src/salida/";            
     
     public Principal() {
         initComponents();
@@ -216,11 +222,10 @@ public class Principal extends javax.swing.JFrame {
         chapterLabel = new javax.swing.JLabel();
         verseSelected = new javax.swing.JLabel();
         versesLabel = new javax.swing.JLabel();
+        help = new javax.swing.JButton();
         selector_panel = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        result = new javax.swing.JTextArea();
-        format = new javax.swing.JButton();
-        copyClip = new javax.swing.JButton();
+        finalOutput1 = new javax.swing.JButton();
+        finalOutput2 = new javax.swing.JButton();
 
         jMenu1.setText("jMenu1");
 
@@ -1300,12 +1305,26 @@ public class Principal extends javax.swing.JFrame {
         bookSelected.setFont(new java.awt.Font("Cantarell", 1, 15)); // NOI18N
 
         chapterSelected.setFont(new java.awt.Font("Cantarell", 1, 15)); // NOI18N
+        chapterSelected.setToolTipText("");
 
         chapterLabel.setText("Capítulo:");
 
         verseSelected.setFont(new java.awt.Font("Cantarell", 1, 15)); // NOI18N
 
         versesLabel.setText("Versículo:");
+
+        help.setFont(new java.awt.Font("Cantarell", 1, 24)); // NOI18N
+        help.setForeground(new java.awt.Color(220, 2, 17));
+        help.setText("?");
+        help.setToolTipText("");
+        help.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        help.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        help.setPreferredSize(new java.awt.Dimension(45, 45));
+        help.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                helpActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout preview_panelLayout = new javax.swing.GroupLayout(preview_panel);
         preview_panel.setLayout(preview_panelLayout);
@@ -1327,7 +1346,8 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(versesLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(verseSelected)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(help, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         preview_panelLayout.setVerticalGroup(
@@ -1335,41 +1355,39 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, preview_panelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(preview_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(versesLabel)
+                    .addComponent(verseSelected)
+                    .addComponent(help, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bookLabel)
+                    .addComponent(chapterLabel)
                     .addComponent(bookSelected)
-                    .addGroup(preview_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(chapterLabel)
-                        .addComponent(chapterSelected)
-                        .addGroup(preview_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(versesLabel)
-                            .addComponent(verseSelected))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chapterSelected))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         selector_panel.setBorder(javax.swing.BorderFactory.createTitledBorder("Multiplexor de textos"));
 
-        result.setColumns(20);
-        result.setLineWrap(true);
-        result.setRows(5);
-        jScrollPane2.setViewportView(result);
-
-        format.setText("Aplicar formato");
-        format.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        format.addActionListener(new java.awt.event.ActionListener() {
+        finalOutput1.setBackground(new java.awt.Color(71, 117, 165));
+        finalOutput1.setFont(new java.awt.Font("Cantarell", 1, 24)); // NOI18N
+        finalOutput1.setForeground(new java.awt.Color(254, 254, 254));
+        finalOutput1.setText("Salida 1");
+        finalOutput1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        finalOutput1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                formatActionPerformed(evt);
+                finalOutput1ActionPerformed(evt);
             }
         });
 
-        copyClip.setBackground(new java.awt.Color(30, 147, 159));
-        copyClip.setFont(new java.awt.Font("Cantarell", 1, 18)); // NOI18N
-        copyClip.setForeground(new java.awt.Color(29, 46, 91));
-        copyClip.setText("Copiar");
-        copyClip.addActionListener(new java.awt.event.ActionListener() {
+        finalOutput2.setBackground(new java.awt.Color(185, 97, 9));
+        finalOutput2.setFont(new java.awt.Font("Cantarell", 1, 24)); // NOI18N
+        finalOutput2.setForeground(new java.awt.Color(254, 254, 254));
+        finalOutput2.setText("Salida 2");
+        finalOutput2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        finalOutput2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                copyClipActionPerformed(evt);
+                finalOutput2ActionPerformed(evt);
             }
         });
 
@@ -1379,23 +1397,18 @@ public class Principal extends javax.swing.JFrame {
             selector_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(selector_panelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(selector_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(copyClip, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(format, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
+                .addComponent(finalOutput1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(finalOutput2, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         selector_panelLayout.setVerticalGroup(
             selector_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(selector_panelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(selector_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, selector_panelLayout.createSequentialGroup()
-                        .addComponent(copyClip, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(format, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(selector_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(finalOutput1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(finalOutput2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1428,18 +1441,10 @@ public class Principal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void formatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_formatActionPerformed
-                
-        /* APLICAR FORMATO REQUERIDO A PASAJE BIBLICO */               
-        result.setText(formatText(previewText.getText()));                            
-    }//GEN-LAST:event_formatActionPerformed
-
-    private void copyClipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_copyClipActionPerformed
-        
-        Clipboard clip = Toolkit.getDefaultToolkit().getSystemClipboard();
-        StringSelection data = new StringSelection(result.getText());
-        clip.setContents(data, data); 
-    }//GEN-LAST:event_copyClipActionPerformed
+    private void finalOutput1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalOutput1ActionPerformed
+        String finalPath = ruta + "salida1.txt";                      
+        crearArchivo(previewText.getText(), finalPath);      
+    }//GEN-LAST:event_finalOutput1ActionPerformed
 
     private void genesisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genesisActionPerformed
         
@@ -1541,6 +1546,9 @@ public class Principal extends javax.swing.JFrame {
     private void v15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v15ActionPerformed
         // Obtener el texto biblico con el libro, capitulo y versiculo seleccionado        
         String preview;
+        String finalPath;
+        
+        
         if (v15.isSelected()){
             verseSelected.setText("15");  
             preview = bookSelected.getText() + "\n";
@@ -1550,9 +1558,27 @@ public class Principal extends javax.swing.JFrame {
             preview += printBiblicText(bookSelected.getText().toLowerCase(), chapterSelected.getText(), verseSelected.getText());
             preview = formatText(preview);
             previewText.setText(preview);
+            
+            
         } else { previewText.setText(""); }                          
     }//GEN-LAST:event_v15ActionPerformed
 
+    private void finalOutput2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalOutput2ActionPerformed
+        String finalPath = ruta + "salida2.txt";                      
+        crearArchivo(previewText.getText(), finalPath);      
+    }//GEN-LAST:event_finalOutput2ActionPerformed
+
+    private void helpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpActionPerformed
+        JOptionPane.showMessageDialog(null, "Bienvenido al proyector de textos bíblicos, \n\n "
+                + "Por favor, selecciona el libro, el capitulo y el versiculo. (Proximamente se podrán seleccionar varios versículos !!",
+                "Ayuda", 
+                JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_helpActionPerformed
+
+    
+    
+    /* > = > = MODULO PROCESAMIENTO DE TEXTO = < = < */
+    
     public static String formatText(String passage) {
 
       // Pasaje resultante
@@ -1625,6 +1651,9 @@ public class Principal extends javax.swing.JFrame {
       resultado += postEspaciado;         
       resultado += saltoDeLinea;         
       
+      
+      resultado += postEspaciado;
+      
       return resultado;
         
     }
@@ -1640,6 +1669,8 @@ public class Principal extends javax.swing.JFrame {
         return false;
         
     }
+    
+    
     
     public static String peticionHttpGet(String urlParaVisitar, String apiKey) throws Exception {
         // Esto es lo que vamos a devolver
@@ -1684,42 +1715,27 @@ public class Principal extends javax.swing.JFrame {
     }
         
     
-    // Metodo que recibe el nombre de un libro y un capitulo, y retorna el numero de versiculos que tiene
-    public static int countVerses(String bookName, String chapter) {
-
-        // Variable donde se guardara el numero de versiculos
-        int verses = 0;
-        boolean chapterFinded = false;
-        
-        // = = = OBTENER EL LIBRO = = =
-        File folder = new File("src/assets/");    
-        String pathFile = extractBook(bookName);       
-        
-        File file = new File(pathFile); 
-        BufferedReader br = null; 
-        try {br = new BufferedReader(new FileReader(file));} 
-        catch (FileNotFoundException ex) {System.out.println("Error leyendo el archivo");}   
-        
-        
-        // = = = OBTENER EL CAPITULO = = =                                                        
-        String linea; 
-        try {
-            // iteramos hasta encontrar la linea con el capitulo dado y comenzar a contar los versiculos
-            while ((linea = br.readLine()) != null){                                                                                              
-                if (extractChapter(linea).equals(chapter)){
-                    chapterFinded = true;                    
-                    verses++;                                        
-                }
-                else {
-                    if (chapterFinded) return verses;
-                }
-                                                     
-            }
-        } catch (IOException ex) {System.out.println("Error leyendo la linea");}
-        
-        return 0;                    
-    }    
     
+    /* > = > = MODULO ARCHIVOS DE SALIDA = < = < */
+               
+    // Metodo que recibe el contenido y la ruta para crear un archivo de texto
+    public static void crearArchivo(String content, String path) {
+
+        File file = new File(path);
+        // Si el archivo no existe es creado
+        try {
+        if (!file.exists()) file.createNewFile();
+
+        FileWriter fw = new FileWriter(file);
+        BufferedWriter bw = new BufferedWriter(fw);
+        bw.write(content);
+        bw.close();
+        } catch (Exception e) {System.out.println("Error creando el archivo");e.printStackTrace();}
+                                
+    } 
+    
+    
+    /* > = > = MODULO TEXTOS BIBLICOS = < = < */
     
     // Metodo que recibe el nombre de un libro, un capitulo y versiculo.
     // Retorna el texto biblico correspondiente
@@ -1772,7 +1788,43 @@ public class Principal extends javax.swing.JFrame {
         return text;
 
     }
-  
+
+    // Metodo que recibe el nombre de un libro y un capitulo, y retorna el numero de versiculos que tiene
+    public static int countVerses(String bookName, String chapter) {
+
+        // Variable donde se guardara el numero de versiculos
+        int verses = 0;
+        boolean chapterFinded = false;
+        
+        // OBTENER EL LIBRO
+        File folder = new File("src/assets/");    
+        String pathFile = extractBook(bookName);       
+        
+        File file = new File(pathFile); 
+        BufferedReader br = null; 
+        try {br = new BufferedReader(new FileReader(file));} 
+        catch (FileNotFoundException ex) {System.out.println("Error leyendo el archivo");}   
+        
+        
+        //  OBTENER EL CAPITULO 
+        String linea; 
+        try {
+            // iteramos hasta encontrar la linea con el capitulo dado y comenzar a contar los versiculos
+            while ((linea = br.readLine()) != null){                                                                                              
+                if (extractChapter(linea).equals(chapter)){
+                    chapterFinded = true;                    
+                    verses++;                                        
+                }
+                else {
+                    if (chapterFinded) return verses;
+                }
+                                                     
+            }
+        } catch (IOException ex) {System.out.println("Error leyendo la linea");}
+        
+        return 0;                    
+    }    
+    
     // Metodo para obtener el versiculo de una línea del archivo de origen
     public static String extractVerse(String line) {
         
@@ -1804,8 +1856,7 @@ public class Principal extends javax.swing.JFrame {
         return chapter;
 
     }
-    
-    
+        
     // Metodo que busca en el directorio assets, el libro con el nombre dado
     // Retorna el path para acceder al archivo del libro
     public static String extractBook(String name) {                
@@ -1822,6 +1873,8 @@ public class Principal extends javax.swing.JFrame {
     }
        
  
+    
+    
     
     
     /**
@@ -1900,6 +1953,17 @@ public class Principal extends javax.swing.JFrame {
                 // Se ocultan todos los capitulos y versiculos inicialmente
                 for (int i = 0; i < chapters.size(); i++) chapters.get(i).setVisible(false);
                 for (int i = 0; i < verses.size(); i++) verses.get(i).setVisible(false);
+                
+                
+                
+                
+                /* Codigo para copiar al portapapeles
+                    Clipboard clip = Toolkit.getDefaultToolkit().getSystemClipboard();
+                    StringSelection data = new StringSelection(result.getText());
+                    clip.setContents(data, data); 
+                */
+                
+                
                                                                               
                 // System.out.println(printBiblicText("2_timoteo", "3", "17"));
                                                                                
@@ -1951,13 +2015,13 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel chapter;
     private javax.swing.JLabel chapterLabel;
     private javax.swing.JLabel chapterSelected;
-    private javax.swing.JButton copyClip;
     private javax.swing.JButton exodo;
-    private javax.swing.JButton format;
+    private javax.swing.JButton finalOutput1;
+    private javax.swing.JButton finalOutput2;
     private javax.swing.JButton genesis;
+    private static javax.swing.JButton help;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JToggleButton jToggleButton100;
     private javax.swing.JToggleButton jToggleButton101;
     private javax.swing.JToggleButton jToggleButton102;
@@ -2065,7 +2129,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JToggleButton jToggleButton99;
     private static javax.swing.JTextArea previewText;
     private javax.swing.JPanel preview_panel;
-    private static javax.swing.JTextArea result;
     private javax.swing.JButton salmos;
     private javax.swing.JPanel selector_panel;
     private static javax.swing.JToggleButton v1;
