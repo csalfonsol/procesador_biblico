@@ -1,4 +1,4 @@
-
+    
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
@@ -474,6 +474,12 @@ public class Principal extends javax.swing.JFrame {
         selector_panel = new javax.swing.JPanel();
         finalOutput1 = new javax.swing.JButton();
         finalOutput2 = new javax.swing.JButton();
+        finalOutput3 = new javax.swing.JButton();
+        finalOutput4 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        limitRow = new javax.swing.JComboBox<>();
+        limitRowLabel = new javax.swing.JLabel();
+        limitRowLabel1 = new javax.swing.JLabel();
 
         jMenu1.setText("jMenu1");
 
@@ -1413,6 +1419,11 @@ public class Principal extends javax.swing.JFrame {
         c15.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         c15.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         c15.setPreferredSize(new java.awt.Dimension(40, 40));
+        c15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                c15ActionPerformed(evt);
+            }
+        });
 
         c19.setText("19");
         c19.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -1498,6 +1509,11 @@ public class Principal extends javax.swing.JFrame {
         c24.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         c24.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         c24.setPreferredSize(new java.awt.Dimension(40, 40));
+        c24.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                c24ActionPerformed(evt);
+            }
+        });
 
         c29.setText("29");
         c29.setToolTipText("");
@@ -2161,6 +2177,11 @@ public class Principal extends javax.swing.JFrame {
         c123.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         c123.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         c123.setPreferredSize(new java.awt.Dimension(40, 40));
+        c123.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                c123ActionPerformed(evt);
+            }
+        });
 
         c124.setText("124");
         c124.setToolTipText("");
@@ -2374,6 +2395,11 @@ public class Principal extends javax.swing.JFrame {
         c150.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         c150.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         c150.setPreferredSize(new java.awt.Dimension(40, 40));
+        c150.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                c150ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout chapterLayout = new javax.swing.GroupLayout(chapter);
         chapter.setLayout(chapterLayout);
@@ -2885,6 +2911,11 @@ public class Principal extends javax.swing.JFrame {
         v2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v2.setPreferredSize(new java.awt.Dimension(40, 36));
+        v2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v2ActionPerformed(evt);
+            }
+        });
 
         v4.setText("4");
         v4.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -2960,12 +2991,22 @@ public class Principal extends javax.swing.JFrame {
         v15.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v15.setMaximumSize(new java.awt.Dimension(32, 36));
         v15.setMinimumSize(new java.awt.Dimension(32, 36));
+        v15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v15ActionPerformed(evt);
+            }
+        });
 
         v14.setText("14");
         v14.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v14.setMaximumSize(new java.awt.Dimension(32, 36));
         v14.setMinimumSize(new java.awt.Dimension(32, 36));
+        v14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v14ActionPerformed(evt);
+            }
+        });
 
         v16.setText("16");
         v16.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -3038,6 +3079,11 @@ public class Principal extends javax.swing.JFrame {
         v26.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v26.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v26.setPreferredSize(new java.awt.Dimension(40, 36));
+        v26.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v26ActionPerformed(evt);
+            }
+        });
 
         v27.setText("27");
         v27.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -4015,6 +4061,11 @@ public class Principal extends javax.swing.JFrame {
         v176.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v176.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v176.setPreferredSize(new java.awt.Dimension(40, 36));
+        v176.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v176ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout verseLayout = new javax.swing.GroupLayout(verse);
         verse.setLayout(verseLayout);
@@ -4377,23 +4428,23 @@ public class Principal extends javax.swing.JFrame {
             verseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(verseLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(verseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(v1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(v2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(v3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(v4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(v5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(v6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(v7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(v8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(v9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(verseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(v10, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(v11, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(v12, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(v13, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(v14, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(v15, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(verseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(v14, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(v15, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(v1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(v2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(v3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(v4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(v5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(v6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(v7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(v8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(v9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(verseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(v16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -4595,7 +4646,7 @@ public class Principal extends javax.swing.JFrame {
             biblicBrowserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(biblicBrowserLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(biblic_panel)
+                .addComponent(biblic_panel, javax.swing.GroupLayout.DEFAULT_SIZE, 581, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -4668,8 +4719,8 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(bookSelected)
                     .addComponent(chapterSelected))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         selector_panel.setBorder(javax.swing.BorderFactory.createTitledBorder("Multiplexor de textos"));
@@ -4696,24 +4747,95 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        finalOutput3.setBackground(new java.awt.Color(71, 117, 165));
+        finalOutput3.setFont(new java.awt.Font("Cantarell", 1, 24)); // NOI18N
+        finalOutput3.setForeground(new java.awt.Color(254, 254, 254));
+        finalOutput3.setText("Salida 3");
+        finalOutput3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        finalOutput3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                finalOutput3ActionPerformed(evt);
+            }
+        });
+
+        finalOutput4.setBackground(new java.awt.Color(185, 97, 9));
+        finalOutput4.setFont(new java.awt.Font("Cantarell", 1, 24)); // NOI18N
+        finalOutput4.setForeground(new java.awt.Color(254, 254, 254));
+        finalOutput4.setText("Salida 4");
+        finalOutput4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        finalOutput4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                finalOutput4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout selector_panelLayout = new javax.swing.GroupLayout(selector_panel);
         selector_panel.setLayout(selector_panelLayout);
         selector_panelLayout.setHorizontalGroup(
             selector_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(selector_panelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(finalOutput1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(finalOutput2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(selector_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(selector_panelLayout.createSequentialGroup()
+                        .addComponent(finalOutput1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(finalOutput2))
+                    .addGroup(selector_panelLayout.createSequentialGroup()
+                        .addComponent(finalOutput3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(finalOutput4)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         selector_panelLayout.setVerticalGroup(
             selector_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(selector_panelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(selector_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(finalOutput1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(finalOutput2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(selector_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(finalOutput1, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+                    .addComponent(finalOutput2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(selector_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(finalOutput3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(finalOutput4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Configuración"));
+
+        limitRow.setMaximumRowCount(16);
+        limitRow.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", "65" }));
+        limitRow.setSelectedIndex(25);
+        limitRow.setToolTipText("");
+        limitRow.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        limitRowLabel.setText("Caracteres máximos");
+
+        limitRowLabel1.setText("por renglón:");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(limitRowLabel)
+                            .addComponent(limitRowLabel1))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(limitRow, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(limitRowLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(limitRowLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(limitRow, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -4726,8 +4848,11 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(biblicBrowser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(preview_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(selector_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(selector_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(preview_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -4737,9 +4862,11 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(biblicBrowser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(preview_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(preview_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(selector_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(selector_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
 
@@ -4752,32 +4879,11 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_finalOutput1ActionPerformed
 
     private void genesisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genesisActionPerformed
-        
-        // numero de capitulos de genesis
-        int capitulos = 26;
-                
-        for (int i = 0; i < capitulos; i++) chapters.get(i).setVisible(true);       
-        for (int i = capitulos; i < chapters.size(); i++) chapters.get(i).setVisible(false);
-        
-        bookSelected.setText("genesis");
-        
-        biblic_panel.setSelectedComponent(chapter);
+        selectBook("genesis");
     }//GEN-LAST:event_genesisActionPerformed
 
     private void c1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c1ActionPerformed
-        
-        // Obtener la cantidad de versiculos del capitulo 1 dado el nombre del libro                 
-        int countVerses = countVerses(bookSelected.getText().toLowerCase(), "1");
-        
-        for (int i = 0; i < countVerses; i++) verses.get(i).setVisible(true);       
-        for (int i = countVerses; i < verses.size(); i++) verses.get(i).setVisible(false);
-                
-        //for (int i = 0; i < capitulos; i++) chapters.get(i).setVisible(true);       
-        //for (int i = capitulos; i < chapters.size(); i++) chapters.get(i).setVisible(false);
-        
-        chapterSelected.setText("1");                
-        
-        biblic_panel.setSelectedComponent(verse);
+        selectChapter("1");
     }//GEN-LAST:event_c1ActionPerformed
 
     private void c5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c5ActionPerformed
@@ -4809,16 +4915,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_c12ActionPerformed
 
     private void salmosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salmosActionPerformed
-        
-          // numero de capitulos de salmos
-        int capitulos = 22;
-                
-        for (int i = 0; i < capitulos; i++) chapters.get(i).setVisible(true);       
-        for (int i = capitulos; i < chapters.size(); i++) chapters.get(i).setVisible(false);
-        
-        bookSelected.setText("Salmos");
-        
-        biblic_panel.setSelectedComponent(chapter);
+        selectBook("salmos");
     }//GEN-LAST:event_salmosActionPerformed
 
     private void v6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v6ActionPerformed
@@ -4845,7 +4942,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_c17ActionPerformed
 
     private void v1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v1ActionPerformed
-        
+        selectVerse("1",v1);
     }//GEN-LAST:event_v1ActionPerformed
 
     private void finalOutput2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalOutput2ActionPerformed
@@ -4861,15 +4958,18 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_helpActionPerformed
 
     private void exodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exodoActionPerformed
-        // TODO add your handling code here:
+        //selectBook(40, "exodo");
+        selectBook("exodo");
     }//GEN-LAST:event_exodoActionPerformed
 
     private void leviticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leviticoActionPerformed
-        // TODO add your handling code here:
+        //selectBook(27, "levitico");
+        selectBook("levitico");
     }//GEN-LAST:event_leviticoActionPerformed
 
     private void numerosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numerosActionPerformed
-        // TODO add your handling code here:
+        // selectBook(36, "levitico");
+        selectBook("numeros");
     }//GEN-LAST:event_numerosActionPerformed
 
     private void deuteronomioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deuteronomioActionPerformed
@@ -5241,7 +5341,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_c118ActionPerformed
 
     private void c119ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c119ActionPerformed
-        // TODO add your handling code here:
+        selectChapter("119");
     }//GEN-LAST:event_c119ActionPerformed
 
     private void c125ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c125ActionPerformed
@@ -5313,7 +5413,21 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_v28ActionPerformed
 
     private void v31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v31ActionPerformed
-        // TODO add your handling code here:
+        // Obtener el texto biblico con el libro, capitulo y versiculo seleccionado        
+        String preview;
+        String finalPath;        
+        
+        if (v31.isSelected()){
+            verseSelected.setText("31");  
+            preview = bookSelected.getText() + " " + chapterSelected.getText() + ":" + verseSelected.getText() + "\n";
+            preview += biblicVersion + "\n";
+            
+            preview += verseSelected.getText() + " ";
+            preview += printBiblicText(bookSelected.getText().toLowerCase(), chapterSelected.getText(), verseSelected.getText());
+            preview = formatText(preview);
+            previewText.setText(preview);
+                        
+        } else { previewText.setText(""); } 
     }//GEN-LAST:event_v31ActionPerformed
 
     private void v39ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v39ActionPerformed
@@ -5460,10 +5574,87 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_v175ActionPerformed
 
-    
-    
+    private void v15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v15ActionPerformed
+        // Obtener el texto biblico con el libro, capitulo y versiculo seleccionado        
+        String preview;
+        String finalPath;
+                
+        if (v15.isSelected()){
+            verseSelected.setText("15");  
+            preview = bookSelected.getText() + " " + chapterSelected.getText() + ":" + verseSelected.getText() + "\n";
+            preview += biblicVersion + "\n";
+            
+            preview += verseSelected.getText() + " ";
+            preview += printBiblicText(bookSelected.getText().toLowerCase(), chapterSelected.getText(), verseSelected.getText());
+            preview = formatText(preview);
+            previewText.setText(preview);            
+            
+        } else { previewText.setText(""); }                              
+    }//GEN-LAST:event_v15ActionPerformed
+
+    private void v26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v26ActionPerformed
+         // Obtener el texto biblico con el libro, capitulo y versiculo seleccionado        
+        String preview;
+        String finalPath;
+                
+        if (v26.isSelected()){
+            verseSelected.setText("26");  
+            preview = bookSelected.getText() + " " + chapterSelected.getText() + ":" + verseSelected.getText() + "\n";
+            preview += biblicVersion + "\n";
+            
+            preview += verseSelected.getText() + " ";
+            preview += printBiblicText(bookSelected.getText().toLowerCase(), chapterSelected.getText(), verseSelected.getText());
+            preview = formatText(preview);
+            previewText.setText(preview);
+            
+        } else { previewText.setText(""); } 
+    }//GEN-LAST:event_v26ActionPerformed
+
+    private void c15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c15ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_c15ActionPerformed
+
+    private void finalOutput3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalOutput3ActionPerformed
+        previewText.setText(applyLimitRows(previewText.getText()));
+    }//GEN-LAST:event_finalOutput3ActionPerformed
+
+    private void finalOutput4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalOutput4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_finalOutput4ActionPerformed
+
+    private void v2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v2ActionPerformed
+        selectVerse("2",v2);
+    }//GEN-LAST:event_v2ActionPerformed
+
+    private void c123ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c123ActionPerformed
+        selectChapter("123");
+    }//GEN-LAST:event_c123ActionPerformed
+
+    private void c24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c24ActionPerformed
+        selectChapter("24");
+    }//GEN-LAST:event_c24ActionPerformed
+
+    private void v14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v14ActionPerformed
+        selectVerse("14",v14);
+    }//GEN-LAST:event_v14ActionPerformed
+
+    private void c150ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c150ActionPerformed
+        selectChapter("150");
+    }//GEN-LAST:event_c150ActionPerformed
+
+    private void v176ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v176ActionPerformed
+        selectVerse("176",v176);
+    }//GEN-LAST:event_v176ActionPerformed
+        
     /* > = > = MODULO PROCESAMIENTO DE TEXTO = < = < */
     
+    /* Metodo que aplica el formato a un pasaje, el pasaje esta compuesto por dos partes:
+        -> ENCABEZADO: Que es la cita biblica y la versión de la biblia
+        -> CUERPO: Que es el versiculo o los versiculos propiamente
+    
+        El formato aplica espacios (pre y post), saltos de línea al pasaje 
+        Y lo retorna de una manera mas apropiada para proyectar en el software de transmisión.
+    */
     public static String formatText(String passage) {
 
       // Pasaje resultante
@@ -5472,6 +5663,7 @@ public class Principal extends javax.swing.JFrame {
       String preEspaciado = "  ";
       String postEspaciado = "  ";
       int posicion = 0;
+      
       // Bandera para el encabezado del pasaje (Ubicacion, Version, y titulo (opcional)
       boolean encabezado = false;
       
@@ -5529,18 +5721,39 @@ public class Principal extends javax.swing.JFrame {
             resultado += passage.substring(i, i+1);
         }
       }
-            
-      // TODO: Si la cadena No tiene al final un salto de linea se le añade
-      
+                  
       // Al final se agrega un post-espaciado y un salto de linea mas
       resultado += postEspaciado;         
       resultado += saltoDeLinea;         
-      
-      
+            
       resultado += postEspaciado;
       
       return resultado;
         
+    }
+    
+    // Método que toma un versículo en un solo renglón extenso, y le aplica saltos de línea 
+    // de acuerdo a un límite definitible desde la UI por el usuario
+    public static String applyLimitRows(String verse) {
+
+      // Verso resultante
+      String result = "";
+      String saltoDeLinea = "\n";
+      int limit = Integer.valueOf(limitRow.getSelectedItem().toString());
+      int currentRowLength = 0;            
+      
+      for (int i = 0; i<verse.length(); i++){                      
+        if (verse.charAt(i) == ' ' && currentRowLength >= limit){          
+          result += saltoDeLinea;
+          currentRowLength = 0;
+        }
+        else {
+          result += verse.charAt(i);
+          currentRowLength++;
+        }  
+      }    
+      
+      return result;                
     }
     
     // Metodo auxiliar para validar si un caracter es nunerico
@@ -5598,10 +5811,8 @@ public class Principal extends javax.swing.JFrame {
         return resultText;
         
     }
-        
-    
-    
-    /* > = > = MODULO ARCHIVOS DE SALIDA = < = < */
+                
+    /* > = > = MODULO DE INTERFAZ GRAFICA = < = < */
                
     // Metodo que recibe el contenido y la ruta para crear un archivo de texto
     public static void crearArchivo(String content, String path) {
@@ -5618,6 +5829,50 @@ public class Principal extends javax.swing.JFrame {
         } catch (Exception e) {System.out.println("Error creando el archivo");e.printStackTrace();}
                                 
     } 
+    
+    
+    // Metodo que se ejecuta cuando se da click en un libro
+    public static void selectBook(String bookName) {       
+                
+        int countChapters = countChapters(bookName);
+        for (int i = 0; i < countChapters; i++) chapters.get(i).setVisible(true);       
+        for (int i = countChapters; i < chapters.size(); i++) chapters.get(i).setVisible(false);
+        
+        bookSelected.setText(bookName);        
+        biblic_panel.setSelectedComponent(chapter);                                
+    } 
+    
+    // Metodo que se ejecuta cuando se da click en un capitulo
+    public static void selectChapter(String chapterNumber) {       
+                          
+        // Obtener la cantidad de versiculos del capitulo 1 dado el nombre del libro                 
+        int countVerses = countVerses(bookSelected.getText().toLowerCase(), chapterNumber);
+        
+        for (int i = 0; i < countVerses; i++) verses.get(i).setVisible(true);       
+        for (int i = countVerses; i < verses.size(); i++) verses.get(i).setVisible(false);                        
+        
+        chapterSelected.setText(chapterNumber);                        
+        biblic_panel.setSelectedComponent(verse);                               
+    } 
+    
+    // Metodo que se ejecuta cuando se da click en un capitulo
+    public static void selectVerse(String verse,JToggleButton button) {       
+                          
+        // Obtener el texto biblico con el libro, capitulo y versiculo seleccionado        
+        String preview;        
+        
+        if (button.isSelected()){
+            verseSelected.setText(verse);  
+            preview = bookSelected.getText() + " " + chapterSelected.getText() + ":" + verseSelected.getText() + "\n";
+            preview += biblicVersion + "\n";
+            
+            preview += verseSelected.getText() + " ";
+            preview += applyLimitRows(printBiblicText(bookSelected.getText().toLowerCase(), chapterSelected.getText(), verseSelected.getText()));
+            preview = formatText(preview);
+            previewText.setText(preview);
+                        
+        } else { previewText.setText(""); }                               
+    }     
     
     
     /* > = > = MODULO TEXTOS BIBLICOS = < = < */
@@ -5668,10 +5923,13 @@ public class Principal extends javax.swing.JFrame {
         
         // Removemos el post-texto inutil
         text = text.substring(0,text.indexOf("'"));
-        text = text.replaceAll("/n", "\n");
+        
+        // Se remueven todos los saltos de línea
+        text = text.replaceAll("/n", "");
+        text = text.replaceAll("\n", "");
 
         return text;
-
+        
     }
 
     // Metodo que recibe el nombre de un libro y un capitulo, y retorna el numero de versiculos que tiene
@@ -5681,8 +5939,7 @@ public class Principal extends javax.swing.JFrame {
         int verses = 0;
         boolean chapterFinded = false;
         
-        // OBTENER EL LIBRO
-        File folder = new File("src/assets/");    
+        // OBTENER EL LIBRO        
         String pathFile = extractBook(bookName);       
         
         File file = new File(pathFile); 
@@ -5708,6 +5965,35 @@ public class Principal extends javax.swing.JFrame {
         } catch (IOException ex) {System.out.println("Error leyendo la linea");}
         
         return 0;                    
+    } 
+    
+    
+    // Metodo que recibe el nombre de un libro y retorna el numero de capitulos que tiene
+    public static int countChapters(String bookName) {
+
+        // Variable donde se guardara el numero de versiculos
+        String chapters = "1";
+        boolean chapterFinded = false;
+        
+        // OBTENER EL LIBRO        
+        String pathFile = extractBook(bookName);       
+        
+        File file = new File(pathFile); 
+        BufferedReader br = null; 
+        try {br = new BufferedReader(new FileReader(file));} 
+        catch (FileNotFoundException ex) {System.out.println("Error leyendo el archivo");}   
+        
+        
+        //  OBTENER EL CAPITULO 
+        String linea; 
+        try {
+            // iteramos hasta encontrar la linea con el capitulo dado y comenzar a contar los versiculos
+            while ((linea = br.readLine()) != null){
+                chapters = extractChapter(linea);
+            }
+        } catch (IOException ex) {System.out.println("Error leyendo la linea");}
+        
+        return Integer.valueOf(chapters);                    
     }    
     
     // Metodo para obtener el versiculo de una línea del archivo de origen
@@ -5757,10 +6043,7 @@ public class Principal extends javax.swing.JFrame {
 
     }
        
- 
-    
-    
-    
+
     
     /**
      * @param args the command line arguments
@@ -5822,8 +6105,130 @@ public class Principal extends javax.swing.JFrame {
                 chapters.add(c25);
                 chapters.add(c26);
                 chapters.add(c27);
-                chapters.add(c28);
-       
+                chapters.add(c28);                
+                chapters.add(c29);
+                chapters.add(c30);
+                chapters.add(c31);
+                chapters.add(c32);
+                chapters.add(c33);
+                chapters.add(c34);
+                chapters.add(c35);
+                chapters.add(c36);
+                chapters.add(c37);
+                chapters.add(c38);
+                chapters.add(c39);
+                chapters.add(c40);                
+                chapters.add(c41);
+                chapters.add(c42);
+                chapters.add(c43);
+                chapters.add(c44);
+                chapters.add(c45);
+                chapters.add(c46);
+                chapters.add(c47);
+                chapters.add(c48);
+                chapters.add(c49);
+                chapters.add(c50);
+                chapters.add(c51);
+                chapters.add(c52);
+                chapters.add(c53);
+                chapters.add(c54);
+                chapters.add(c55);
+                chapters.add(c56);
+                chapters.add(c57);
+                chapters.add(c58);
+                chapters.add(c59);                
+                chapters.add(c60);
+                chapters.add(c61);
+                chapters.add(c62);
+                chapters.add(c63);
+                chapters.add(c64);
+                chapters.add(c65);
+                chapters.add(c66);
+                chapters.add(c67);
+                chapters.add(c68);
+                chapters.add(c69);
+                chapters.add(c70);
+                chapters.add(c71);
+                chapters.add(c72);
+                chapters.add(c73);
+                chapters.add(c74);
+                chapters.add(c75);
+                chapters.add(c76);                
+                chapters.add(c77);
+                chapters.add(c78);
+                chapters.add(c79);
+                chapters.add(c80);
+                chapters.add(c81);
+                chapters.add(c82);                
+                chapters.add(c83);
+                chapters.add(c84);
+                chapters.add(c85);
+                chapters.add(c86);
+                chapters.add(c87);
+                chapters.add(c88);
+                chapters.add(c89);
+                chapters.add(c90);                
+                chapters.add(c91);
+                chapters.add(c92);
+                chapters.add(c93);
+                chapters.add(c94);
+                chapters.add(c95);
+                chapters.add(c96);
+                chapters.add(c97);
+                chapters.add(c98);
+                chapters.add(c99);
+                chapters.add(c100);                
+                chapters.add(c101);
+                chapters.add(c102);
+                chapters.add(c103);
+                chapters.add(c104);
+                chapters.add(c105);
+                chapters.add(c106);
+                chapters.add(c107);
+                chapters.add(c108);
+                chapters.add(c109);
+                chapters.add(c110);
+                chapters.add(c111);
+                chapters.add(c112);
+                chapters.add(c113);
+                chapters.add(c114);
+                chapters.add(c115);
+                chapters.add(c116);
+                chapters.add(c117);
+                chapters.add(c118);
+                chapters.add(c119);
+                chapters.add(c120);
+                chapters.add(c121);                
+                chapters.add(c122);
+                chapters.add(c123);
+                chapters.add(c124);
+                chapters.add(c125);
+                chapters.add(c126);
+                chapters.add(c127);
+                chapters.add(c128);
+                chapters.add(c129);
+                chapters.add(c130);
+                chapters.add(c131);
+                chapters.add(c132);
+                chapters.add(c133);
+                chapters.add(c134);
+                chapters.add(c135);
+                chapters.add(c136);
+                chapters.add(c137);
+                chapters.add(c138);
+                chapters.add(c139);
+                chapters.add(c140);
+                chapters.add(c141);
+                chapters.add(c142);
+                chapters.add(c143);
+                chapters.add(c144);
+                chapters.add(c145);
+                chapters.add(c146);
+                chapters.add(c147);
+                chapters.add(c148);
+                chapters.add(c149);
+                chapters.add(c150);
+                
                 
                 verses.add(v1);
                 verses.add(v2);
@@ -5840,10 +6245,172 @@ public class Principal extends javax.swing.JFrame {
                 verses.add(v13);
                 verses.add(v14);
                 verses.add(v15);
+                verses.add(v16);
+                verses.add(v17);
+                verses.add(v18);
+                verses.add(v19);
+                verses.add(v20);
+                verses.add(v21);
+                verses.add(v22);
+                verses.add(v23);
+                verses.add(v24);
+                verses.add(v25);
+                verses.add(v26);
+                verses.add(v27);
+                verses.add(v28);                
+                verses.add(v29);
+                verses.add(v30);
+                verses.add(v31);
+                verses.add(v32);
+                verses.add(v33);
+                verses.add(v34);
+                verses.add(v35);
+                verses.add(v36);
+                verses.add(v37);
+                verses.add(v38);
+                verses.add(v39);
+                verses.add(v40);                
+                verses.add(v41);
+                verses.add(v42);
+                verses.add(v43);
+                verses.add(v44);
+                verses.add(v45);
+                verses.add(v46);
+                verses.add(v47);
+                verses.add(v48);
+                verses.add(v49);
+                verses.add(v50);
+                verses.add(v51);
+                verses.add(v52);
+                verses.add(v53);
+                verses.add(v54);
+                verses.add(v55);
+                verses.add(v56);
+                verses.add(v57);
+                verses.add(v58);
+                verses.add(v59);                
+                verses.add(v60);
+                verses.add(v61);
+                verses.add(v62);
+                verses.add(v63);
+                verses.add(v64);
+                verses.add(v65);
+                verses.add(v66);
+                verses.add(v67);
+                verses.add(v68);
+                verses.add(v69);
+                verses.add(v70);
+                verses.add(v71);
+                verses.add(v72);
+                verses.add(v73);
+                verses.add(v74);
+                verses.add(v75);
+                verses.add(v76);                
+                verses.add(v77);
+                verses.add(v78);
+                verses.add(v79);
+                verses.add(v80);
+                verses.add(v81);
+                verses.add(v82);                
+                verses.add(v83);
+                verses.add(v84);
+                verses.add(v85);
+                verses.add(v86);
+                verses.add(v87);
+                verses.add(v88);
+                verses.add(v89);
+                verses.add(v90);                
+                verses.add(v91);
+                verses.add(v92);
+                verses.add(v93);
+                verses.add(v94);
+                verses.add(v95);
+                verses.add(v96);
+                verses.add(v97);
+                verses.add(v98);
+                verses.add(v99);
+                verses.add(v100);                
+                verses.add(v101);
+                verses.add(v102);
+                verses.add(v103);
+                verses.add(v104);
+                verses.add(v105);
+                verses.add(v106);
+                verses.add(v107);
+                verses.add(v108);
+                verses.add(v109);
+                verses.add(v110);
+                verses.add(v111);
+                verses.add(v112);
+                verses.add(v113);
+                verses.add(v114);
+                verses.add(v115);
+                verses.add(v116);
+                verses.add(v117);
+                verses.add(v118);
+                verses.add(v119);
+                verses.add(v120);
+                verses.add(v121);                
+                verses.add(v122);
+                verses.add(v123);
+                verses.add(v124);
+                verses.add(v125);
+                verses.add(v126);
+                verses.add(v127);
+                verses.add(v128);
+                verses.add(v129);
+                verses.add(v130);
+                verses.add(v131);
+                verses.add(v132);
+                verses.add(v133);
+                verses.add(v134);
+                verses.add(v135);
+                verses.add(v136);
+                verses.add(v137);
+                verses.add(v138);
+                verses.add(v139);
+                verses.add(v140);
+                verses.add(v141);
+                verses.add(v142);
+                verses.add(v143);
+                verses.add(v144);
+                verses.add(v145);
+                verses.add(v146);
+                verses.add(v147);
+                verses.add(v148);
+                verses.add(v149);
+                verses.add(v150);
+                verses.add(v151);
+                verses.add(v152);
+                verses.add(v153);
+                verses.add(v154);
+                verses.add(v155);
+                verses.add(v156);
+                verses.add(v157);
+                verses.add(v158);                
+                verses.add(v159);                                                                
+                verses.add(v160);
+                verses.add(v161);
+                verses.add(v162);
+                verses.add(v163);
+                verses.add(v164);
+                verses.add(v165);
+                verses.add(v166);
+                verses.add(v167);
+                verses.add(v168);
+                verses.add(v169);
+                verses.add(v170);
+                verses.add(v171);
+                verses.add(v172);
+                verses.add(v173);
+                verses.add(v174);
+                verses.add(v175);
+                verses.add(v176);
+                
                           
                 // Se ocultan todos los capitulos y versiculos inicialmente
-                // for (int i = 0; i < chapters.size(); i++) chapters.get(i).setVisible(false);
-                // for (int i = 0; i < verses.size(); i++) verses.get(i).setVisible(false);
+                for (int i = 0; i < chapters.size(); i++) chapters.get(i).setVisible(false);
+                for (int i = 0; i < verses.size(); i++) verses.get(i).setVisible(false);
                 
                 
                 
@@ -5880,10 +6447,10 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton amos;
     private javax.swing.JButton apocalipsis;
     private javax.swing.JPanel biblicBrowser;
-    private javax.swing.JTabbedPane biblic_panel;
-    private javax.swing.JPanel book;
+    private static javax.swing.JTabbedPane biblic_panel;
+    private static javax.swing.JPanel book;
     private javax.swing.JLabel bookLabel;
-    private javax.swing.JLabel bookSelected;
+    private static javax.swing.JLabel bookSelected;
     private static javax.swing.JButton c1;
     private static javax.swing.JButton c10;
     private static javax.swing.JButton c100;
@@ -6035,9 +6602,9 @@ public class Principal extends javax.swing.JFrame {
     private static javax.swing.JButton c98;
     private static javax.swing.JButton c99;
     private javax.swing.JButton cantares;
-    private javax.swing.JPanel chapter;
+    private static javax.swing.JPanel chapter;
     private javax.swing.JLabel chapterLabel;
-    private javax.swing.JLabel chapterSelected;
+    private static javax.swing.JLabel chapterSelected;
     private javax.swing.JButton colosenses;
     private javax.swing.JButton corintios1;
     private javax.swing.JButton corintios2;
@@ -6055,6 +6622,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton filipenses;
     private javax.swing.JButton finalOutput1;
     private javax.swing.JButton finalOutput2;
+    private javax.swing.JButton finalOutput3;
+    private javax.swing.JButton finalOutput4;
     private javax.swing.JButton galatas;
     private javax.swing.JButton genesis;
     private javax.swing.JButton habacuc;
@@ -6064,6 +6633,7 @@ public class Principal extends javax.swing.JFrame {
     private static javax.swing.JButton help;
     private javax.swing.JButton isaias;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jeremias;
     private javax.swing.JButton job;
@@ -6078,6 +6648,9 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jueces;
     private javax.swing.JButton lamentaciones;
     private javax.swing.JButton levitico;
+    private static javax.swing.JComboBox<String> limitRow;
+    private javax.swing.JLabel limitRowLabel;
+    private javax.swing.JLabel limitRowLabel1;
     private javax.swing.JButton lucas;
     private javax.swing.JButton malaquias;
     private javax.swing.JButton marcos;
@@ -6284,8 +6857,8 @@ public class Principal extends javax.swing.JFrame {
     private static javax.swing.JToggleButton v97;
     private static javax.swing.JToggleButton v98;
     private static javax.swing.JToggleButton v99;
-    private javax.swing.JPanel verse;
-    private javax.swing.JLabel verseSelected;
+    private static javax.swing.JPanel verse;
+    private static javax.swing.JLabel verseSelected;
     private javax.swing.JLabel versesLabel;
     private javax.swing.JButton zacarias;
     // End of variables declaration//GEN-END:variables
