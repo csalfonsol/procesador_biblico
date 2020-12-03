@@ -1343,6 +1343,11 @@ public class Principal extends javax.swing.JFrame {
         c2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         c2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         c2.setPreferredSize(new java.awt.Dimension(40, 40));
+        c2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                c2ActionPerformed(evt);
+            }
+        });
 
         c1.setText("1");
         c1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -1358,21 +1363,41 @@ public class Principal extends javax.swing.JFrame {
         c3.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         c3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         c3.setPreferredSize(new java.awt.Dimension(40, 40));
+        c3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                c3ActionPerformed(evt);
+            }
+        });
 
         c4.setText("4");
         c4.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         c4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         c4.setPreferredSize(new java.awt.Dimension(40, 40));
+        c4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                c4ActionPerformed(evt);
+            }
+        });
 
         c8.setText("8");
         c8.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         c8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         c8.setPreferredSize(new java.awt.Dimension(40, 40));
+        c8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                c8ActionPerformed(evt);
+            }
+        });
 
         c6.setText("6");
         c6.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         c6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         c6.setPreferredSize(new java.awt.Dimension(40, 40));
+        c6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                c6ActionPerformed(evt);
+            }
+        });
 
         c7.setText("7");
         c7.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -1398,6 +1423,11 @@ public class Principal extends javax.swing.JFrame {
         c9.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         c9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         c9.setPreferredSize(new java.awt.Dimension(40, 40));
+        c9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                c9ActionPerformed(evt);
+            }
+        });
 
         c10.setFont(new java.awt.Font("Cantarell", 0, 12)); // NOI18N
         c10.setText("10");
@@ -1414,6 +1444,11 @@ public class Principal extends javax.swing.JFrame {
         c11.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         c11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         c11.setPreferredSize(new java.awt.Dimension(40, 40));
+        c11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                c11ActionPerformed(evt);
+            }
+        });
 
         c15.setText("15");
         c15.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -1484,6 +1519,11 @@ public class Principal extends javax.swing.JFrame {
         c13.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         c13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         c13.setPreferredSize(new java.awt.Dimension(40, 40));
+        c13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                c13ActionPerformed(evt);
+            }
+        });
 
         c12.setText("12");
         c12.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -1499,6 +1539,11 @@ public class Principal extends javax.swing.JFrame {
         c14.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         c14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         c14.setPreferredSize(new java.awt.Dimension(40, 40));
+        c14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                c14ActionPerformed(evt);
+            }
+        });
 
         c23.setText("23");
         c23.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -4887,31 +4932,31 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_c1ActionPerformed
 
     private void c5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c5ActionPerformed
-        // TODO add your handling code here:
+        selectChapter("5");
     }//GEN-LAST:event_c5ActionPerformed
 
     private void c10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c10ActionPerformed
-        // TODO add your handling code here:
+        selectChapter("10");
     }//GEN-LAST:event_c10ActionPerformed
 
     private void c7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c7ActionPerformed
-        // TODO add your handling code here:
+        selectChapter("7");
     }//GEN-LAST:event_c7ActionPerformed
 
     private void c18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c18ActionPerformed
-        // TODO add your handling code here:
+        selectChapter("18");
     }//GEN-LAST:event_c18ActionPerformed
 
     private void c16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c16ActionPerformed
-        // TODO add your handling code here:
+        selectChapter("16");
     }//GEN-LAST:event_c16ActionPerformed
 
     private void c21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c21ActionPerformed
-        // TODO add your handling code here:
+        selectChapter("21");
     }//GEN-LAST:event_c21ActionPerformed
 
     private void c12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c12ActionPerformed
-        // TODO add your handling code here:
+        selectChapter("12");
     }//GEN-LAST:event_c12ActionPerformed
 
     private void salmosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salmosActionPerformed
@@ -4958,7 +5003,6 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_helpActionPerformed
 
     private void exodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exodoActionPerformed
-        //selectBook(40, "exodo");
         selectBook("exodo");
     }//GEN-LAST:event_exodoActionPerformed
 
@@ -4973,11 +5017,11 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_numerosActionPerformed
 
     private void deuteronomioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deuteronomioActionPerformed
-        // TODO add your handling code here:
+        selectBook("deuteronomio");
     }//GEN-LAST:event_deuteronomioActionPerformed
 
     private void josueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_josueActionPerformed
-        // TODO add your handling code here:
+        selectBook("josue");
     }//GEN-LAST:event_josueActionPerformed
 
     private void c29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c29ActionPerformed
@@ -4997,239 +5041,239 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_c33ActionPerformed
 
     private void juecesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_juecesActionPerformed
-        // TODO add your handling code here:
+        selectBook("jueces");
     }//GEN-LAST:event_juecesActionPerformed
 
     private void rutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rutActionPerformed
-        // TODO add your handling code here:
+        selectBook("rut");
     }//GEN-LAST:event_rutActionPerformed
 
     private void nehemiasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nehemiasActionPerformed
-        // TODO add your handling code here:
+        selectBook("nehemias");
     }//GEN-LAST:event_nehemiasActionPerformed
 
     private void esterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_esterActionPerformed
-        // TODO add your handling code here:
+        selectBook("ester");
     }//GEN-LAST:event_esterActionPerformed
 
     private void cronicas2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cronicas2ActionPerformed
-        // TODO add your handling code here:
+        selectBook("2_cronicas");
     }//GEN-LAST:event_cronicas2ActionPerformed
 
     private void esdrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_esdrasActionPerformed
-        // TODO add your handling code here:
+        selectBook("esdras");
     }//GEN-LAST:event_esdrasActionPerformed
 
     private void jobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobActionPerformed
-        // TODO add your handling code here:
+        selectBook("job");
     }//GEN-LAST:event_jobActionPerformed
 
     private void proverbiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_proverbiosActionPerformed
-        // TODO add your handling code here:
+        selectBook("proverbios");
     }//GEN-LAST:event_proverbiosActionPerformed
 
     private void eclesiastesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eclesiastesActionPerformed
-        // TODO add your handling code here:
+        selectBook("eclesiastes");
     }//GEN-LAST:event_eclesiastesActionPerformed
 
     private void reyes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reyes1ActionPerformed
-        // TODO add your handling code here:
+        selectBook("1_reyes");
     }//GEN-LAST:event_reyes1ActionPerformed
 
     private void reyes2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reyes2ActionPerformed
-        // TODO add your handling code here:
+        selectBook("2_reyes");
     }//GEN-LAST:event_reyes2ActionPerformed
 
     private void samuel1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_samuel1ActionPerformed
-        // TODO add your handling code here:
+        selectBook("1_samuel");
     }//GEN-LAST:event_samuel1ActionPerformed
 
     private void samuel2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_samuel2ActionPerformed
-        // TODO add your handling code here:
+        selectBook("2_samuel");
     }//GEN-LAST:event_samuel2ActionPerformed
 
     private void cronicas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cronicas1ActionPerformed
-        // TODO add your handling code here:
+        selectBook("1_cronicas");
     }//GEN-LAST:event_cronicas1ActionPerformed
 
     private void isaiasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_isaiasActionPerformed
-        // TODO add your handling code here:
+        selectBook("isaias");
     }//GEN-LAST:event_isaiasActionPerformed
 
     private void jeremiasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jeremiasActionPerformed
-        // TODO add your handling code here:
+        selectBook("jeremias");
     }//GEN-LAST:event_jeremiasActionPerformed
 
     private void cantaresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantaresActionPerformed
-        // TODO add your handling code here:
+        selectBook("cantares");
     }//GEN-LAST:event_cantaresActionPerformed
 
     private void lamentacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lamentacionesActionPerformed
-        // TODO add your handling code here:
+        selectBook("lamentaciones");
     }//GEN-LAST:event_lamentacionesActionPerformed
 
     private void danielActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_danielActionPerformed
-        // TODO add your handling code here:
+        selectBook("daniel");
     }//GEN-LAST:event_danielActionPerformed
 
     private void ezequielActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ezequielActionPerformed
-        // TODO add your handling code here:
+        selectBook("ezequiel");
     }//GEN-LAST:event_ezequielActionPerformed
 
     private void oseasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oseasActionPerformed
-        // TODO add your handling code here:
+        selectBook("oseas");
     }//GEN-LAST:event_oseasActionPerformed
 
     private void amosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_amosActionPerformed
-        // TODO add your handling code here:
+        selectBook("amos");
     }//GEN-LAST:event_amosActionPerformed
 
     private void abdíasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abdíasActionPerformed
-        // TODO add your handling code here:
+        selectBook("abdias");
     }//GEN-LAST:event_abdíasActionPerformed
 
     private void joelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_joelActionPerformed
-        // TODO add your handling code here:
+        selectBook("joel");
     }//GEN-LAST:event_joelActionPerformed
 
     private void jonasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jonasActionPerformed
-        // TODO add your handling code here:
+        selectBook("jonas");
     }//GEN-LAST:event_jonasActionPerformed
 
     private void nahumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nahumActionPerformed
-        // TODO add your handling code here:
+        selectBook("nahum");
     }//GEN-LAST:event_nahumActionPerformed
 
     private void habacucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_habacucActionPerformed
-        // TODO add your handling code here:
+        selectBook("habacuc");
     }//GEN-LAST:event_habacucActionPerformed
 
     private void miqueasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miqueasActionPerformed
-        // TODO add your handling code here:
+        selectBook("miqueas");
     }//GEN-LAST:event_miqueasActionPerformed
 
     private void sofoniasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sofoniasActionPerformed
-        // TODO add your handling code here:
+        selectBook("sofonias");
     }//GEN-LAST:event_sofoniasActionPerformed
 
     private void mateoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mateoActionPerformed
-        // TODO add your handling code here:
+        selectBook("mateo");
     }//GEN-LAST:event_mateoActionPerformed
 
     private void hageoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hageoActionPerformed
-        // TODO add your handling code here:
+        selectBook("hageo");
     }//GEN-LAST:event_hageoActionPerformed
 
     private void zacariasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zacariasActionPerformed
-        // TODO add your handling code here:
+        selectBook("zacarias");
     }//GEN-LAST:event_zacariasActionPerformed
 
     private void malaquiasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_malaquiasActionPerformed
-        // TODO add your handling code here:
+        selectBook("malaquias");
     }//GEN-LAST:event_malaquiasActionPerformed
 
     private void hechosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hechosActionPerformed
-        // TODO add your handling code here:
+        selectBook("hechos");
     }//GEN-LAST:event_hechosActionPerformed
 
     private void marcosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marcosActionPerformed
-        // TODO add your handling code here:
+        selectBook("marcos");
     }//GEN-LAST:event_marcosActionPerformed
 
     private void lucasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lucasActionPerformed
-        // TODO add your handling code here:
+        selectBook("lucas");
     }//GEN-LAST:event_lucasActionPerformed
 
     private void juanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_juanActionPerformed
-        // TODO add your handling code here:
+        selectBook("juan");
     }//GEN-LAST:event_juanActionPerformed
 
     private void efesiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_efesiosActionPerformed
-        // TODO add your handling code here:
+        selectBook("efesios");
     }//GEN-LAST:event_efesiosActionPerformed
 
     private void romanosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_romanosActionPerformed
-        // TODO add your handling code here:
+        selectBook("romanos");
     }//GEN-LAST:event_romanosActionPerformed
 
     private void corintios1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_corintios1ActionPerformed
-        // TODO add your handling code here:
+        selectBook("1_corintios");
     }//GEN-LAST:event_corintios1ActionPerformed
 
     private void galatasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_galatasActionPerformed
-        // TODO add your handling code here:
+        selectBook("galatas");
     }//GEN-LAST:event_galatasActionPerformed
 
     private void filipensesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filipensesActionPerformed
-        // TODO add your handling code here:
+        selectBook("filipenses");
     }//GEN-LAST:event_filipensesActionPerformed
 
     private void colosensesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_colosensesActionPerformed
-        // TODO add your handling code here:
+        selectBook("colosenses");
     }//GEN-LAST:event_colosensesActionPerformed
 
     private void corintios2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_corintios2ActionPerformed
-        // TODO add your handling code here:
+        selectBook("2_corintios");
     }//GEN-LAST:event_corintios2ActionPerformed
 
     private void tesalonicenses1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tesalonicenses1ActionPerformed
-        // TODO add your handling code here:
+        selectBook("1_tesalonicenses");
     }//GEN-LAST:event_tesalonicenses1ActionPerformed
 
     private void filemonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filemonActionPerformed
-        // TODO add your handling code here:
+        selectBook("filemon");
     }//GEN-LAST:event_filemonActionPerformed
 
     private void santiagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_santiagoActionPerformed
-        // TODO add your handling code here:
+        selectBook("santiago");
     }//GEN-LAST:event_santiagoActionPerformed
 
     private void hebreosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hebreosActionPerformed
-        // TODO add your handling code here:
+        selectBook("hebreos");
     }//GEN-LAST:event_hebreosActionPerformed
 
     private void tesalonicenses2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tesalonicenses2ActionPerformed
-        // TODO add your handling code here:
+        selectBook("2_tesalonicenses");
     }//GEN-LAST:event_tesalonicenses2ActionPerformed
 
     private void timoteo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_timoteo1ActionPerformed
-        // TODO add your handling code here:
+        selectBook("1_timoteo");
     }//GEN-LAST:event_timoteo1ActionPerformed
 
     private void titoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_titoActionPerformed
-        // TODO add your handling code here:
+        selectBook("tito");
     }//GEN-LAST:event_titoActionPerformed
 
     private void timoteo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_timoteo2ActionPerformed
-        // TODO add your handling code here:
+        selectBook("2_timoteo");
     }//GEN-LAST:event_timoteo2ActionPerformed
 
     private void pedro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pedro1ActionPerformed
-        // TODO add your handling code here:
+        selectBook("1_pedro");
     }//GEN-LAST:event_pedro1ActionPerformed
 
     private void pedro2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pedro2ActionPerformed
-        // TODO add your handling code here:
+        selectBook("2_pedro");
     }//GEN-LAST:event_pedro2ActionPerformed
 
     private void juan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_juan1ActionPerformed
-        // TODO add your handling code here:
+        selectBook("1_juan");
     }//GEN-LAST:event_juan1ActionPerformed
 
     private void juan2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_juan2ActionPerformed
-        // TODO add your handling code here:
+        selectBook("2_juan");
     }//GEN-LAST:event_juan2ActionPerformed
 
     private void juan3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_juan3ActionPerformed
-        // TODO add your handling code here:
+        selectBook("3_juan");
     }//GEN-LAST:event_juan3ActionPerformed
 
     private void judasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_judasActionPerformed
-        // TODO add your handling code here:
+        selectBook("judas");
     }//GEN-LAST:event_judasActionPerformed
 
     private void apocalipsisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apocalipsisActionPerformed
-        // TODO add your handling code here:
+        selectBook("apocalipsis");
     }//GEN-LAST:event_apocalipsisActionPerformed
 
     private void c40ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c40ActionPerformed
@@ -5611,7 +5655,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_v26ActionPerformed
 
     private void c15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c15ActionPerformed
-        // TODO add your handling code here:
+        selectChapter("15");
     }//GEN-LAST:event_c15ActionPerformed
 
     private void finalOutput3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalOutput3ActionPerformed
@@ -5645,6 +5689,42 @@ public class Principal extends javax.swing.JFrame {
     private void v176ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v176ActionPerformed
         selectVerse("176",v176);
     }//GEN-LAST:event_v176ActionPerformed
+
+    private void c2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c2ActionPerformed
+        selectChapter("2");
+    }//GEN-LAST:event_c2ActionPerformed
+
+    private void c3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c3ActionPerformed
+        selectChapter("3");
+    }//GEN-LAST:event_c3ActionPerformed
+
+    private void c4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c4ActionPerformed
+        selectChapter("4");
+    }//GEN-LAST:event_c4ActionPerformed
+
+    private void c6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c6ActionPerformed
+        selectChapter("6");
+    }//GEN-LAST:event_c6ActionPerformed
+
+    private void c8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c8ActionPerformed
+        selectChapter("8");
+    }//GEN-LAST:event_c8ActionPerformed
+
+    private void c9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c9ActionPerformed
+        selectChapter("9");
+    }//GEN-LAST:event_c9ActionPerformed
+
+    private void c11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c11ActionPerformed
+        selectChapter("11");
+    }//GEN-LAST:event_c11ActionPerformed
+
+    private void c13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c13ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_c13ActionPerformed
+
+    private void c14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c14ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_c14ActionPerformed
         
     /* > = > = MODULO PROCESAMIENTO DE TEXTO = < = < */
     
