@@ -13,6 +13,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -44,8 +45,16 @@ public class Principal extends javax.swing.JFrame {
     // Marca de la versión (Por ahora solo Reina valera)
     static String biblicVersion = "Reina-Valera 1960";
     
+    // Usado para mostrar el nombre del libro adecuadamente
+    static String displayBook;
+    
+    // Lista usada para almacenar los versículos seleccionados en un momento dado
+    static List<Integer> currentVerses = new ArrayList<Integer>();    
+    
+    // --- //
+    
     // Carpeta donde se crean los archivos de salida
-    String ruta = "src/salida/";            
+    String ruta = "resources/salida/";            
     
     public Principal() {
         initComponents();
@@ -470,16 +479,17 @@ public class Principal extends javax.swing.JFrame {
         chapterLabel = new javax.swing.JLabel();
         verseSelected = new javax.swing.JLabel();
         versesLabel = new javax.swing.JLabel();
-        help = new javax.swing.JButton();
         selector_panel = new javax.swing.JPanel();
         finalOutput1 = new javax.swing.JButton();
         finalOutput2 = new javax.swing.JButton();
         finalOutput3 = new javax.swing.JButton();
         finalOutput4 = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
+        config_panel = new javax.swing.JPanel();
         limitRow = new javax.swing.JComboBox<>();
         limitRowLabel = new javax.swing.JLabel();
         limitRowLabel1 = new javax.swing.JLabel();
+        help = new javax.swing.JButton();
+        limitRowLabel2 = new javax.swing.JLabel();
 
         jMenu1.setText("jMenu1");
 
@@ -493,6 +503,8 @@ public class Principal extends javax.swing.JFrame {
 
         biblic_panel.setToolTipText("");
         biblic_panel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        book.setFont(new java.awt.Font("Cantarell", 0, 15)); // NOI18N
 
         genesis.setFont(new java.awt.Font("Cantarell", 0, 18)); // NOI18N
         genesis.setText("Génesis");
@@ -3480,6 +3492,11 @@ public class Principal extends javax.swing.JFrame {
         v13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v13.setMaximumSize(new java.awt.Dimension(32, 36));
         v13.setMinimumSize(new java.awt.Dimension(32, 36));
+        v13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v13ActionPerformed(evt);
+            }
+        });
 
         v15.setText("15");
         v15.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -3518,41 +3535,76 @@ public class Principal extends javax.swing.JFrame {
         v17.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v17.setMaximumSize(new java.awt.Dimension(32, 36));
         v17.setMinimumSize(new java.awt.Dimension(32, 36));
+        v17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v17ActionPerformed(evt);
+            }
+        });
 
         v18.setText("18");
         v18.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v18.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v18.setMaximumSize(new java.awt.Dimension(32, 36));
         v18.setMinimumSize(new java.awt.Dimension(32, 36));
+        v18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v18ActionPerformed(evt);
+            }
+        });
 
         v19.setText("19");
         v19.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v19.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v19.setMaximumSize(new java.awt.Dimension(32, 36));
         v19.setMinimumSize(new java.awt.Dimension(32, 36));
+        v19.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v19ActionPerformed(evt);
+            }
+        });
 
         v20.setText("20");
         v20.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v20.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v20.setPreferredSize(new java.awt.Dimension(40, 36));
+        v20.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v20ActionPerformed(evt);
+            }
+        });
 
         v21.setText("21");
         v21.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v21.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v21.setMaximumSize(new java.awt.Dimension(32, 36));
         v21.setMinimumSize(new java.awt.Dimension(32, 36));
+        v21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v21ActionPerformed(evt);
+            }
+        });
 
         v22.setText("22");
         v22.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v22.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v22.setMaximumSize(new java.awt.Dimension(32, 36));
         v22.setMinimumSize(new java.awt.Dimension(32, 36));
+        v22.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v22ActionPerformed(evt);
+            }
+        });
 
         v23.setText("23");
         v23.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v23.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v23.setMaximumSize(new java.awt.Dimension(32, 36));
         v23.setMinimumSize(new java.awt.Dimension(32, 36));
+        v23.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v23ActionPerformed(evt);
+            }
+        });
 
         v24.setText("24");
         v24.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -3568,6 +3620,11 @@ public class Principal extends javax.swing.JFrame {
         v25.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v25.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v25.setPreferredSize(new java.awt.Dimension(40, 36));
+        v25.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v25ActionPerformed(evt);
+            }
+        });
 
         v26.setText("26");
         v26.setToolTipText("");
@@ -3584,6 +3641,11 @@ public class Principal extends javax.swing.JFrame {
         v27.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v27.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v27.setPreferredSize(new java.awt.Dimension(40, 36));
+        v27.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v27ActionPerformed(evt);
+            }
+        });
 
         v28.setText("28");
         v28.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -3599,11 +3661,21 @@ public class Principal extends javax.swing.JFrame {
         v29.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v29.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v29.setPreferredSize(new java.awt.Dimension(40, 36));
+        v29.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v29ActionPerformed(evt);
+            }
+        });
 
         v30.setText("30");
         v30.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v30.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v30.setPreferredSize(new java.awt.Dimension(40, 36));
+        v30.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v30ActionPerformed(evt);
+            }
+        });
 
         v31.setText("31");
         v31.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -3620,41 +3692,76 @@ public class Principal extends javax.swing.JFrame {
         v32.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v32.setMaximumSize(new java.awt.Dimension(32, 36));
         v32.setMinimumSize(new java.awt.Dimension(32, 36));
+        v32.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v32ActionPerformed(evt);
+            }
+        });
 
         v33.setText("33");
         v33.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v33.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v33.setMaximumSize(new java.awt.Dimension(32, 36));
         v33.setMinimumSize(new java.awt.Dimension(32, 36));
+        v33.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v33ActionPerformed(evt);
+            }
+        });
 
         v34.setText("34");
         v34.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v34.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v34.setMaximumSize(new java.awt.Dimension(32, 36));
         v34.setMinimumSize(new java.awt.Dimension(32, 36));
+        v34.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v34ActionPerformed(evt);
+            }
+        });
 
         v35.setText("35");
         v35.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v35.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v35.setPreferredSize(new java.awt.Dimension(40, 36));
+        v35.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v35ActionPerformed(evt);
+            }
+        });
 
         v36.setText("36");
         v36.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v36.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v36.setMaximumSize(new java.awt.Dimension(32, 36));
         v36.setMinimumSize(new java.awt.Dimension(32, 36));
+        v36.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v36ActionPerformed(evt);
+            }
+        });
 
         v37.setText("37");
         v37.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v37.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v37.setMaximumSize(new java.awt.Dimension(32, 36));
         v37.setMinimumSize(new java.awt.Dimension(32, 36));
+        v37.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v37ActionPerformed(evt);
+            }
+        });
 
         v38.setText("38");
         v38.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v38.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v38.setMaximumSize(new java.awt.Dimension(32, 36));
         v38.setMinimumSize(new java.awt.Dimension(32, 36));
+        v38.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v38ActionPerformed(evt);
+            }
+        });
 
         v39.setText("39");
         v39.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -3672,41 +3779,76 @@ public class Principal extends javax.swing.JFrame {
         v40.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v40.setMaximumSize(new java.awt.Dimension(32, 36));
         v40.setMinimumSize(new java.awt.Dimension(32, 36));
+        v40.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v40ActionPerformed(evt);
+            }
+        });
 
         v41.setText("41");
         v41.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v41.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v41.setMaximumSize(new java.awt.Dimension(32, 36));
         v41.setMinimumSize(new java.awt.Dimension(32, 36));
+        v41.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v41ActionPerformed(evt);
+            }
+        });
 
         v42.setText("42");
         v42.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v42.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v42.setMaximumSize(new java.awt.Dimension(32, 36));
         v42.setMinimumSize(new java.awt.Dimension(32, 36));
+        v42.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v42ActionPerformed(evt);
+            }
+        });
 
         v43.setText("43");
         v43.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v43.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v43.setPreferredSize(new java.awt.Dimension(40, 36));
+        v43.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v43ActionPerformed(evt);
+            }
+        });
 
         v44.setText("44");
         v44.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v44.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v44.setMaximumSize(new java.awt.Dimension(32, 36));
         v44.setMinimumSize(new java.awt.Dimension(32, 36));
+        v44.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v44ActionPerformed(evt);
+            }
+        });
 
         v45.setText("45");
         v45.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v45.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v45.setMaximumSize(new java.awt.Dimension(32, 36));
         v45.setMinimumSize(new java.awt.Dimension(32, 36));
+        v45.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v45ActionPerformed(evt);
+            }
+        });
 
         v46.setText("46");
         v46.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v46.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v46.setMaximumSize(new java.awt.Dimension(32, 36));
         v46.setMinimumSize(new java.awt.Dimension(32, 36));
+        v46.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v46ActionPerformed(evt);
+            }
+        });
 
         v47.setText("47");
         v47.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -3722,16 +3864,31 @@ public class Principal extends javax.swing.JFrame {
         v48.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v48.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v48.setPreferredSize(new java.awt.Dimension(40, 36));
+        v48.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v48ActionPerformed(evt);
+            }
+        });
 
         v49.setText("49");
         v49.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v49.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v49.setPreferredSize(new java.awt.Dimension(40, 36));
+        v49.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v49ActionPerformed(evt);
+            }
+        });
 
         v50.setText("50");
         v50.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v50.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v50.setPreferredSize(new java.awt.Dimension(40, 36));
+        v50.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v50ActionPerformed(evt);
+            }
+        });
 
         v51.setText("51");
         v51.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -3747,11 +3904,21 @@ public class Principal extends javax.swing.JFrame {
         v52.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v52.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v52.setPreferredSize(new java.awt.Dimension(40, 36));
+        v52.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v52ActionPerformed(evt);
+            }
+        });
 
         v53.setText("53");
         v53.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v53.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v53.setPreferredSize(new java.awt.Dimension(40, 36));
+        v53.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v53ActionPerformed(evt);
+            }
+        });
 
         v54.setText("54");
         v54.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -3767,16 +3934,31 @@ public class Principal extends javax.swing.JFrame {
         v55.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v55.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v55.setPreferredSize(new java.awt.Dimension(40, 36));
+        v55.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v55ActionPerformed(evt);
+            }
+        });
 
         v56.setText("56");
         v56.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v56.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v56.setPreferredSize(new java.awt.Dimension(40, 36));
+        v56.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v56ActionPerformed(evt);
+            }
+        });
 
         v57.setText("57");
         v57.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v57.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v57.setPreferredSize(new java.awt.Dimension(40, 36));
+        v57.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v57ActionPerformed(evt);
+            }
+        });
 
         v58.setText("58");
         v58.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -3792,17 +3974,32 @@ public class Principal extends javax.swing.JFrame {
         v59.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v59.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v59.setPreferredSize(new java.awt.Dimension(40, 36));
+        v59.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v59ActionPerformed(evt);
+            }
+        });
 
         v60.setText("60");
         v60.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v60.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v60.setPreferredSize(new java.awt.Dimension(40, 36));
+        v60.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v60ActionPerformed(evt);
+            }
+        });
 
         v61.setText("61");
         v61.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v61.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v61.setMaximumSize(new java.awt.Dimension(32, 36));
         v61.setMinimumSize(new java.awt.Dimension(32, 36));
+        v61.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v61ActionPerformed(evt);
+            }
+        });
 
         v62.setText("62");
         v62.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -3818,16 +4015,31 @@ public class Principal extends javax.swing.JFrame {
         v63.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v63.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v63.setPreferredSize(new java.awt.Dimension(40, 36));
+        v63.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v63ActionPerformed(evt);
+            }
+        });
 
         v64.setText("64");
         v64.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v64.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v64.setPreferredSize(new java.awt.Dimension(40, 36));
+        v64.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v64ActionPerformed(evt);
+            }
+        });
 
         v65.setText("65");
         v65.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v65.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v65.setPreferredSize(new java.awt.Dimension(40, 36));
+        v65.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v65ActionPerformed(evt);
+            }
+        });
 
         v66.setText("66");
         v66.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -3843,12 +4055,22 @@ public class Principal extends javax.swing.JFrame {
         v67.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v67.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v67.setPreferredSize(new java.awt.Dimension(40, 36));
+        v67.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v67ActionPerformed(evt);
+            }
+        });
 
         v68.setText("68");
         v68.setToolTipText("");
         v68.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v68.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v68.setPreferredSize(new java.awt.Dimension(40, 36));
+        v68.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v68ActionPerformed(evt);
+            }
+        });
 
         v69.setText("69");
         v69.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -3864,16 +4086,31 @@ public class Principal extends javax.swing.JFrame {
         v70.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v70.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v70.setPreferredSize(new java.awt.Dimension(40, 36));
+        v70.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v70ActionPerformed(evt);
+            }
+        });
 
         v71.setText("71");
         v71.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v71.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v71.setPreferredSize(new java.awt.Dimension(40, 36));
+        v71.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v71ActionPerformed(evt);
+            }
+        });
 
         v72.setText("72");
         v72.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v72.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v72.setPreferredSize(new java.awt.Dimension(40, 36));
+        v72.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v72ActionPerformed(evt);
+            }
+        });
 
         v73.setText("73");
         v73.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -3889,17 +4126,32 @@ public class Principal extends javax.swing.JFrame {
         v74.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v74.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v74.setPreferredSize(new java.awt.Dimension(40, 36));
+        v74.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v74ActionPerformed(evt);
+            }
+        });
 
         v75.setText("75");
         v75.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v75.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v75.setPreferredSize(new java.awt.Dimension(40, 36));
+        v75.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v75ActionPerformed(evt);
+            }
+        });
 
         v76.setText("76");
         v76.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v76.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v76.setMaximumSize(new java.awt.Dimension(32, 36));
         v76.setMinimumSize(new java.awt.Dimension(32, 36));
+        v76.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v76ActionPerformed(evt);
+            }
+        });
 
         v77.setText("77");
         v77.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -3915,16 +4167,31 @@ public class Principal extends javax.swing.JFrame {
         v78.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v78.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v78.setPreferredSize(new java.awt.Dimension(40, 36));
+        v78.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v78ActionPerformed(evt);
+            }
+        });
 
         v79.setText("79");
         v79.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v79.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v79.setPreferredSize(new java.awt.Dimension(40, 36));
+        v79.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v79ActionPerformed(evt);
+            }
+        });
 
         v80.setText("80");
         v80.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v80.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v80.setPreferredSize(new java.awt.Dimension(40, 36));
+        v80.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v80ActionPerformed(evt);
+            }
+        });
 
         v81.setText("81");
         v81.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -3940,12 +4207,22 @@ public class Principal extends javax.swing.JFrame {
         v82.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v82.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v82.setPreferredSize(new java.awt.Dimension(40, 36));
+        v82.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v82ActionPerformed(evt);
+            }
+        });
 
         v83.setText("83");
         v83.setToolTipText("");
         v83.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v83.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v83.setPreferredSize(new java.awt.Dimension(40, 36));
+        v83.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v83ActionPerformed(evt);
+            }
+        });
 
         v84.setText("84");
         v84.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -3961,16 +4238,31 @@ public class Principal extends javax.swing.JFrame {
         v85.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v85.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v85.setPreferredSize(new java.awt.Dimension(40, 36));
+        v85.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v85ActionPerformed(evt);
+            }
+        });
 
         v86.setText("86");
         v86.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v86.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v86.setPreferredSize(new java.awt.Dimension(40, 36));
+        v86.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v86ActionPerformed(evt);
+            }
+        });
 
         v87.setText("87");
         v87.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v87.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v87.setPreferredSize(new java.awt.Dimension(40, 36));
+        v87.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v87ActionPerformed(evt);
+            }
+        });
 
         v88.setText("88");
         v88.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -3986,17 +4278,32 @@ public class Principal extends javax.swing.JFrame {
         v89.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v89.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v89.setPreferredSize(new java.awt.Dimension(40, 36));
+        v89.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v89ActionPerformed(evt);
+            }
+        });
 
         v90.setText("90");
         v90.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v90.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v90.setPreferredSize(new java.awt.Dimension(40, 36));
+        v90.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v90ActionPerformed(evt);
+            }
+        });
 
         v91.setText("91");
         v91.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v91.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v91.setMaximumSize(new java.awt.Dimension(32, 36));
         v91.setMinimumSize(new java.awt.Dimension(32, 36));
+        v91.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v91ActionPerformed(evt);
+            }
+        });
 
         v92.setText("92");
         v92.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -4012,16 +4319,31 @@ public class Principal extends javax.swing.JFrame {
         v93.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v93.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v93.setPreferredSize(new java.awt.Dimension(40, 36));
+        v93.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v93ActionPerformed(evt);
+            }
+        });
 
         v94.setText("94");
         v94.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v94.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v94.setPreferredSize(new java.awt.Dimension(40, 36));
+        v94.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v94ActionPerformed(evt);
+            }
+        });
 
         v95.setText("95");
         v95.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v95.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v95.setPreferredSize(new java.awt.Dimension(40, 36));
+        v95.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v95ActionPerformed(evt);
+            }
+        });
 
         v96.setText("96");
         v96.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -4037,12 +4359,22 @@ public class Principal extends javax.swing.JFrame {
         v97.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v97.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v97.setPreferredSize(new java.awt.Dimension(40, 36));
+        v97.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v97ActionPerformed(evt);
+            }
+        });
 
         v98.setText("98");
         v98.setToolTipText("");
         v98.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v98.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v98.setPreferredSize(new java.awt.Dimension(40, 36));
+        v98.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v98ActionPerformed(evt);
+            }
+        });
 
         v99.setText("99");
         v99.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -4058,16 +4390,31 @@ public class Principal extends javax.swing.JFrame {
         v100.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v100.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v100.setPreferredSize(new java.awt.Dimension(40, 36));
+        v100.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v100ActionPerformed(evt);
+            }
+        });
 
         v101.setText("101");
         v101.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v101.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v101.setPreferredSize(new java.awt.Dimension(40, 36));
+        v101.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v101ActionPerformed(evt);
+            }
+        });
 
         v102.setText("102");
         v102.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v102.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v102.setPreferredSize(new java.awt.Dimension(40, 36));
+        v102.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v102ActionPerformed(evt);
+            }
+        });
 
         v103.setText("103");
         v103.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -4083,17 +4430,32 @@ public class Principal extends javax.swing.JFrame {
         v104.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v104.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v104.setPreferredSize(new java.awt.Dimension(40, 36));
+        v104.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v104ActionPerformed(evt);
+            }
+        });
 
         v105.setText("105");
         v105.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v105.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v105.setPreferredSize(new java.awt.Dimension(40, 36));
+        v105.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v105ActionPerformed(evt);
+            }
+        });
 
         v106.setText("106");
         v106.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v106.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v106.setMaximumSize(new java.awt.Dimension(32, 36));
         v106.setMinimumSize(new java.awt.Dimension(32, 36));
+        v106.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v106ActionPerformed(evt);
+            }
+        });
 
         v107.setText("107");
         v107.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -4109,16 +4471,31 @@ public class Principal extends javax.swing.JFrame {
         v108.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v108.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v108.setPreferredSize(new java.awt.Dimension(40, 36));
+        v108.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v108ActionPerformed(evt);
+            }
+        });
 
         v109.setText("109");
         v109.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v109.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v109.setPreferredSize(new java.awt.Dimension(40, 36));
+        v109.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v109ActionPerformed(evt);
+            }
+        });
 
         v110.setText("110");
         v110.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v110.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v110.setPreferredSize(new java.awt.Dimension(40, 36));
+        v110.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v110ActionPerformed(evt);
+            }
+        });
 
         v111.setText("111");
         v111.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -4134,12 +4511,22 @@ public class Principal extends javax.swing.JFrame {
         v112.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v112.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v112.setPreferredSize(new java.awt.Dimension(40, 36));
+        v112.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v112ActionPerformed(evt);
+            }
+        });
 
         v113.setText("113");
         v113.setToolTipText("");
         v113.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v113.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v113.setPreferredSize(new java.awt.Dimension(40, 36));
+        v113.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v113ActionPerformed(evt);
+            }
+        });
 
         v114.setText("114");
         v114.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -4155,16 +4542,31 @@ public class Principal extends javax.swing.JFrame {
         v115.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v115.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v115.setPreferredSize(new java.awt.Dimension(40, 36));
+        v115.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v115ActionPerformed(evt);
+            }
+        });
 
         v116.setText("116");
         v116.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v116.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v116.setPreferredSize(new java.awt.Dimension(40, 36));
+        v116.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v116ActionPerformed(evt);
+            }
+        });
 
         v117.setText("117");
         v117.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v117.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v117.setPreferredSize(new java.awt.Dimension(40, 36));
+        v117.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v117ActionPerformed(evt);
+            }
+        });
 
         v118.setText("118");
         v118.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -4180,23 +4582,43 @@ public class Principal extends javax.swing.JFrame {
         v119.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v119.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v119.setPreferredSize(new java.awt.Dimension(40, 36));
+        v119.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v119ActionPerformed(evt);
+            }
+        });
 
         v120.setText("120");
         v120.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v120.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v120.setPreferredSize(new java.awt.Dimension(40, 36));
+        v120.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v120ActionPerformed(evt);
+            }
+        });
 
         v121.setText("121");
         v121.setToolTipText("");
         v121.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v121.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v121.setPreferredSize(new java.awt.Dimension(40, 36));
+        v121.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v121ActionPerformed(evt);
+            }
+        });
 
         v122.setText("122");
         v122.setToolTipText("");
         v122.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v122.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v122.setPreferredSize(new java.awt.Dimension(40, 36));
+        v122.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v122ActionPerformed(evt);
+            }
+        });
 
         v123.setText("123");
         v123.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -4212,16 +4634,31 @@ public class Principal extends javax.swing.JFrame {
         v124.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v124.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v124.setPreferredSize(new java.awt.Dimension(40, 36));
+        v124.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v124ActionPerformed(evt);
+            }
+        });
 
         v125.setText("125");
         v125.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v125.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v125.setPreferredSize(new java.awt.Dimension(40, 36));
+        v125.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v125ActionPerformed(evt);
+            }
+        });
 
         v126.setText("126");
         v126.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v126.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v126.setPreferredSize(new java.awt.Dimension(40, 36));
+        v126.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v126ActionPerformed(evt);
+            }
+        });
 
         v127.setText("127");
         v127.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -4247,12 +4684,22 @@ public class Principal extends javax.swing.JFrame {
         v129.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v129.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v129.setPreferredSize(new java.awt.Dimension(40, 36));
+        v129.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v129ActionPerformed(evt);
+            }
+        });
 
         v130.setText("130");
         v130.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v130.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v130.setMaximumSize(new java.awt.Dimension(32, 36));
         v130.setMinimumSize(new java.awt.Dimension(32, 36));
+        v130.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v130ActionPerformed(evt);
+            }
+        });
 
         v131.setText("131");
         v131.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -4268,16 +4715,31 @@ public class Principal extends javax.swing.JFrame {
         v132.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v132.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v132.setPreferredSize(new java.awt.Dimension(40, 36));
+        v132.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v132ActionPerformed(evt);
+            }
+        });
 
         v133.setText("133");
         v133.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v133.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v133.setPreferredSize(new java.awt.Dimension(40, 36));
+        v133.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v133ActionPerformed(evt);
+            }
+        });
 
         v134.setText("134");
         v134.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v134.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v134.setPreferredSize(new java.awt.Dimension(40, 36));
+        v134.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v134ActionPerformed(evt);
+            }
+        });
 
         v135.setText("135");
         v135.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -4294,12 +4756,22 @@ public class Principal extends javax.swing.JFrame {
         v136.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v136.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v136.setPreferredSize(new java.awt.Dimension(40, 36));
+        v136.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v136ActionPerformed(evt);
+            }
+        });
 
         v137.setText("137");
         v137.setToolTipText("");
         v137.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v137.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v137.setPreferredSize(new java.awt.Dimension(40, 36));
+        v137.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v137ActionPerformed(evt);
+            }
+        });
 
         v138.setText("138");
         v138.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -4316,16 +4788,31 @@ public class Principal extends javax.swing.JFrame {
         v139.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v139.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v139.setPreferredSize(new java.awt.Dimension(40, 36));
+        v139.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v139ActionPerformed(evt);
+            }
+        });
 
         v140.setText("140");
         v140.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v140.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v140.setPreferredSize(new java.awt.Dimension(40, 36));
+        v140.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v140ActionPerformed(evt);
+            }
+        });
 
         v141.setText("141");
         v141.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v141.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v141.setPreferredSize(new java.awt.Dimension(40, 36));
+        v141.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v141ActionPerformed(evt);
+            }
+        });
 
         v142.setText("142");
         v142.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -4341,17 +4828,32 @@ public class Principal extends javax.swing.JFrame {
         v143.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v143.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v143.setPreferredSize(new java.awt.Dimension(40, 36));
+        v143.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v143ActionPerformed(evt);
+            }
+        });
 
         v144.setText("144");
         v144.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v144.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v144.setPreferredSize(new java.awt.Dimension(40, 36));
+        v144.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v144ActionPerformed(evt);
+            }
+        });
 
         v145.setText("145");
         v145.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v145.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v145.setMaximumSize(new java.awt.Dimension(32, 36));
         v145.setMinimumSize(new java.awt.Dimension(32, 36));
+        v145.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v145ActionPerformed(evt);
+            }
+        });
 
         v146.setText("146");
         v146.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -4367,16 +4869,31 @@ public class Principal extends javax.swing.JFrame {
         v147.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v147.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v147.setPreferredSize(new java.awt.Dimension(40, 36));
+        v147.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v147ActionPerformed(evt);
+            }
+        });
 
         v148.setText("148");
         v148.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v148.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v148.setPreferredSize(new java.awt.Dimension(40, 36));
+        v148.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v148ActionPerformed(evt);
+            }
+        });
 
         v149.setText("149");
         v149.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v149.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v149.setPreferredSize(new java.awt.Dimension(40, 36));
+        v149.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v149ActionPerformed(evt);
+            }
+        });
 
         v150.setText("150");
         v150.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -4393,12 +4910,22 @@ public class Principal extends javax.swing.JFrame {
         v151.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v151.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v151.setPreferredSize(new java.awt.Dimension(40, 36));
+        v151.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v151ActionPerformed(evt);
+            }
+        });
 
         v152.setText("152");
         v152.setToolTipText("");
         v152.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v152.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v152.setPreferredSize(new java.awt.Dimension(40, 36));
+        v152.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v152ActionPerformed(evt);
+            }
+        });
 
         v153.setText("153");
         v153.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -4415,16 +4942,31 @@ public class Principal extends javax.swing.JFrame {
         v154.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v154.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v154.setPreferredSize(new java.awt.Dimension(40, 36));
+        v154.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v154ActionPerformed(evt);
+            }
+        });
 
         v155.setText("155");
         v155.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v155.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v155.setPreferredSize(new java.awt.Dimension(40, 36));
+        v155.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v155ActionPerformed(evt);
+            }
+        });
 
         v156.setText("156");
         v156.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v156.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v156.setPreferredSize(new java.awt.Dimension(40, 36));
+        v156.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v156ActionPerformed(evt);
+            }
+        });
 
         v157.setText("157");
         v157.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -4440,18 +4982,33 @@ public class Principal extends javax.swing.JFrame {
         v158.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v158.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v158.setPreferredSize(new java.awt.Dimension(40, 36));
+        v158.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v158ActionPerformed(evt);
+            }
+        });
 
         v159.setText("159");
         v159.setToolTipText("");
         v159.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v159.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v159.setPreferredSize(new java.awt.Dimension(40, 36));
+        v159.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v159ActionPerformed(evt);
+            }
+        });
 
         v160.setText("160");
         v160.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v160.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v160.setMaximumSize(new java.awt.Dimension(32, 36));
         v160.setMinimumSize(new java.awt.Dimension(32, 36));
+        v160.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v160ActionPerformed(evt);
+            }
+        });
 
         v161.setText("161");
         v161.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -4467,16 +5024,31 @@ public class Principal extends javax.swing.JFrame {
         v162.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v162.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v162.setPreferredSize(new java.awt.Dimension(40, 36));
+        v162.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v162ActionPerformed(evt);
+            }
+        });
 
         v163.setText("163");
         v163.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v163.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v163.setPreferredSize(new java.awt.Dimension(40, 36));
+        v163.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v163ActionPerformed(evt);
+            }
+        });
 
         v164.setText("164");
         v164.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v164.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v164.setPreferredSize(new java.awt.Dimension(40, 36));
+        v164.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v164ActionPerformed(evt);
+            }
+        });
 
         v165.setText("165");
         v165.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -4493,6 +5065,11 @@ public class Principal extends javax.swing.JFrame {
         v166.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v166.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v166.setPreferredSize(new java.awt.Dimension(40, 36));
+        v166.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v166ActionPerformed(evt);
+            }
+        });
 
         v167.setText("167");
         v167.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -4509,16 +5086,31 @@ public class Principal extends javax.swing.JFrame {
         v168.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v168.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v168.setPreferredSize(new java.awt.Dimension(40, 36));
+        v168.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v168ActionPerformed(evt);
+            }
+        });
 
         v169.setText("169");
         v169.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v169.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v169.setPreferredSize(new java.awt.Dimension(40, 36));
+        v169.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v169ActionPerformed(evt);
+            }
+        });
 
         v170.setText("170");
         v170.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v170.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v170.setPreferredSize(new java.awt.Dimension(40, 36));
+        v170.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v170ActionPerformed(evt);
+            }
+        });
 
         v171.setText("171");
         v171.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -4534,18 +5126,33 @@ public class Principal extends javax.swing.JFrame {
         v172.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v172.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v172.setPreferredSize(new java.awt.Dimension(40, 36));
+        v172.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v172ActionPerformed(evt);
+            }
+        });
 
         v173.setText("173");
         v173.setToolTipText("");
         v173.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v173.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v173.setPreferredSize(new java.awt.Dimension(40, 36));
+        v173.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v173ActionPerformed(evt);
+            }
+        });
 
         v174.setText("174");
         v174.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         v174.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         v174.setMaximumSize(new java.awt.Dimension(32, 36));
         v174.setMinimumSize(new java.awt.Dimension(32, 36));
+        v174.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                v174ActionPerformed(evt);
+            }
+        });
 
         v175.setText("175");
         v175.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -5139,14 +5746,14 @@ public class Principal extends javax.swing.JFrame {
             biblicBrowserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(biblicBrowserLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(biblic_panel)
+                .addComponent(biblic_panel, javax.swing.GroupLayout.DEFAULT_SIZE, 760, Short.MAX_VALUE)
                 .addContainerGap())
         );
         biblicBrowserLayout.setVerticalGroup(
             biblicBrowserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(biblicBrowserLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(biblic_panel, javax.swing.GroupLayout.DEFAULT_SIZE, 581, Short.MAX_VALUE)
+                .addComponent(biblic_panel, javax.swing.GroupLayout.DEFAULT_SIZE, 585, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -5167,20 +5774,7 @@ public class Principal extends javax.swing.JFrame {
 
         verseSelected.setFont(new java.awt.Font("Cantarell", 1, 15)); // NOI18N
 
-        versesLabel.setText("Versículo:");
-
-        help.setFont(new java.awt.Font("Cantarell", 1, 24)); // NOI18N
-        help.setForeground(new java.awt.Color(220, 2, 17));
-        help.setText("?");
-        help.setToolTipText("");
-        help.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        help.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        help.setPreferredSize(new java.awt.Dimension(45, 45));
-        help.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                helpActionPerformed(evt);
-            }
-        });
+        versesLabel.setText("Versículo(s):");
 
         javax.swing.GroupLayout preview_panelLayout = new javax.swing.GroupLayout(preview_panel);
         preview_panel.setLayout(preview_panelLayout);
@@ -5202,8 +5796,7 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(versesLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(verseSelected)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(help, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         preview_panelLayout.setVerticalGroup(
@@ -5213,33 +5806,37 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(preview_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(versesLabel)
                     .addComponent(verseSelected)
-                    .addComponent(help, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bookLabel)
                     .addComponent(chapterLabel)
                     .addComponent(bookSelected)
                     .addComponent(chapterSelected))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        selector_panel.setBorder(javax.swing.BorderFactory.createTitledBorder("Multiplexor de textos"));
+        selector_panel.setBorder(javax.swing.BorderFactory.createTitledBorder("Enviar a salida"));
 
-        finalOutput1.setBackground(new java.awt.Color(71, 117, 165));
-        finalOutput1.setFont(new java.awt.Font("Cantarell", 1, 24)); // NOI18N
+        finalOutput1.setBackground(new java.awt.Color(24, 51, 95));
+        finalOutput1.setFont(new java.awt.Font("Cantarell", 1, 18)); // NOI18N
         finalOutput1.setForeground(new java.awt.Color(254, 254, 254));
         finalOutput1.setText("Salida 1");
+        finalOutput1.setToolTipText("Se envia al texto 1 del obs");
+        finalOutput1.setBorder(null);
         finalOutput1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        finalOutput1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         finalOutput1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 finalOutput1ActionPerformed(evt);
             }
         });
 
-        finalOutput2.setBackground(new java.awt.Color(185, 97, 9));
-        finalOutput2.setFont(new java.awt.Font("Cantarell", 1, 24)); // NOI18N
+        finalOutput2.setBackground(new java.awt.Color(24, 51, 95));
+        finalOutput2.setFont(new java.awt.Font("Cantarell", 1, 18)); // NOI18N
         finalOutput2.setForeground(new java.awt.Color(254, 254, 254));
         finalOutput2.setText("Salida 2");
+        finalOutput2.setToolTipText("Se envia al texto 2 del OBS");
+        finalOutput2.setBorder(null);
         finalOutput2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         finalOutput2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -5247,10 +5844,12 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        finalOutput3.setBackground(new java.awt.Color(71, 117, 165));
-        finalOutput3.setFont(new java.awt.Font("Cantarell", 1, 24)); // NOI18N
+        finalOutput3.setBackground(new java.awt.Color(24, 51, 95));
+        finalOutput3.setFont(new java.awt.Font("Cantarell", 1, 16)); // NOI18N
         finalOutput3.setForeground(new java.awt.Color(254, 254, 254));
         finalOutput3.setText("Salida 3");
+        finalOutput3.setToolTipText("Se envia al texto 3 del OBS");
+        finalOutput3.setBorder(null);
         finalOutput3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         finalOutput3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -5258,10 +5857,12 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        finalOutput4.setBackground(new java.awt.Color(185, 97, 9));
-        finalOutput4.setFont(new java.awt.Font("Cantarell", 1, 24)); // NOI18N
+        finalOutput4.setBackground(new java.awt.Color(24, 51, 95));
+        finalOutput4.setFont(new java.awt.Font("Cantarell", 1, 16)); // NOI18N
         finalOutput4.setForeground(new java.awt.Color(254, 254, 254));
         finalOutput4.setText("Salida 4");
+        finalOutput4.setToolTipText("Se envia al texto 4 del OBS");
+        finalOutput4.setBorder(null);
         finalOutput4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         finalOutput4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -5273,34 +5874,31 @@ public class Principal extends javax.swing.JFrame {
         selector_panel.setLayout(selector_panelLayout);
         selector_panelLayout.setHorizontalGroup(
             selector_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(selector_panelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(selector_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(selector_panelLayout.createSequentialGroup()
-                        .addComponent(finalOutput1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(finalOutput2))
-                    .addGroup(selector_panelLayout.createSequentialGroup()
-                        .addComponent(finalOutput3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(finalOutput4)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, selector_panelLayout.createSequentialGroup()
+                .addGroup(selector_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(finalOutput3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(finalOutput1, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(selector_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(finalOutput2, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
+                    .addComponent(finalOutput4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         selector_panelLayout.setVerticalGroup(
             selector_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(selector_panelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(selector_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(finalOutput1, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+                .addGroup(selector_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(finalOutput1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(finalOutput2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(selector_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(finalOutput3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(finalOutput4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(finalOutput4, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)))
         );
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Configuración"));
+        finalOutput1.getAccessibleContext().setAccessibleDescription("Se envia al texto 1 del OBS");
+
+        config_panel.setBorder(javax.swing.BorderFactory.createTitledBorder("Configuración"));
 
         limitRow.setMaximumRowCount(16);
         limitRow.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", "65" }));
@@ -5312,31 +5910,54 @@ public class Principal extends javax.swing.JFrame {
 
         limitRowLabel1.setText("por renglón:");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        help.setFont(new java.awt.Font("Cantarell", 1, 24)); // NOI18N
+        help.setForeground(new java.awt.Color(220, 2, 17));
+        help.setText("?");
+        help.setToolTipText("");
+        help.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        help.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        help.setPreferredSize(new java.awt.Dimension(45, 45));
+        help.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                helpActionPerformed(evt);
+            }
+        });
+
+        limitRowLabel2.setFont(new java.awt.Font("Cantarell", 3, 14)); // NOI18N
+        limitRowLabel2.setText("v1.0");
+
+        javax.swing.GroupLayout config_panelLayout = new javax.swing.GroupLayout(config_panel);
+        config_panel.setLayout(config_panelLayout);
+        config_panelLayout.setHorizontalGroup(
+            config_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(config_panelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(config_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(limitRow, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(help, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(config_panelLayout.createSequentialGroup()
+                        .addGroup(config_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(limitRowLabel)
                             .addComponent(limitRowLabel1))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(limitRow, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 47, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, config_panelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(limitRowLabel2)))
                 .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        config_panelLayout.setVerticalGroup(
+            config_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, config_panelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(limitRowLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(limitRowLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(limitRow, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(help, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(limitRowLabel2))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -5351,7 +5972,7 @@ public class Principal extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(selector_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(config_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(preview_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -5365,8 +5986,8 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(preview_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(selector_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(config_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(selector_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
 
@@ -5379,7 +6000,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_finalOutput1ActionPerformed
 
     private void genesisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genesisActionPerformed
-        selectBook("genesis");
+        selectBook("genesis", (JButton) evt.getSource());
     }//GEN-LAST:event_genesisActionPerformed
 
     private void c1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c1ActionPerformed
@@ -5415,15 +6036,15 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_c12ActionPerformed
 
     private void salmosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salmosActionPerformed
-        selectBook("salmos");
+        selectBook("salmos",(JButton) evt.getSource());
     }//GEN-LAST:event_salmosActionPerformed
 
     private void v6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v6ActionPerformed
-        // TODO add your handling code here:
+        selectVerse((JToggleButton) evt.getSource());
     }//GEN-LAST:event_v6ActionPerformed
 
     private void v8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v8ActionPerformed
-        // TODO add your handling code here:
+        selectVerse((JToggleButton) evt.getSource());
     }//GEN-LAST:event_v8ActionPerformed
 
     private void c17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c17ActionPerformed
@@ -5447,25 +6068,23 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_helpActionPerformed
 
     private void exodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exodoActionPerformed
-        selectBook("exodo");
+        selectBook("exodo",(JButton) evt.getSource());
     }//GEN-LAST:event_exodoActionPerformed
 
     private void leviticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leviticoActionPerformed
-        //selectBook(27, "levitico");
-        selectBook("levitico");
+        selectBook("levitico",(JButton) evt.getSource());
     }//GEN-LAST:event_leviticoActionPerformed
 
     private void numerosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numerosActionPerformed
-        // selectBook(36, "levitico");
-        selectBook("numeros");
+        selectBook("numeros",(JButton) evt.getSource());
     }//GEN-LAST:event_numerosActionPerformed
 
     private void deuteronomioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deuteronomioActionPerformed
-        selectBook("deuteronomio");
+        selectBook("deuteronomio",(JButton) evt.getSource());
     }//GEN-LAST:event_deuteronomioActionPerformed
 
     private void josueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_josueActionPerformed
-        selectBook("josue");
+        selectBook("josue",(JButton) evt.getSource());
     }//GEN-LAST:event_josueActionPerformed
 
     private void c29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c29ActionPerformed
@@ -5485,239 +6104,239 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_c33ActionPerformed
 
     private void juecesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_juecesActionPerformed
-        selectBook("jueces");
+        selectBook("jueces",(JButton) evt.getSource());
     }//GEN-LAST:event_juecesActionPerformed
 
     private void rutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rutActionPerformed
-        selectBook("rut");
+        selectBook("rut",(JButton) evt.getSource());
     }//GEN-LAST:event_rutActionPerformed
 
     private void nehemiasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nehemiasActionPerformed
-        selectBook("nehemias");
+        selectBook("nehemias",(JButton) evt.getSource());
     }//GEN-LAST:event_nehemiasActionPerformed
 
     private void esterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_esterActionPerformed
-        selectBook("ester");
+        selectBook("ester",(JButton) evt.getSource());
     }//GEN-LAST:event_esterActionPerformed
 
     private void cronicas2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cronicas2ActionPerformed
-        selectBook("2_cronicas");
+        selectBook("2_cronicas",(JButton) evt.getSource());
     }//GEN-LAST:event_cronicas2ActionPerformed
 
     private void esdrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_esdrasActionPerformed
-        selectBook("esdras");
+        selectBook("esdras",(JButton) evt.getSource());
     }//GEN-LAST:event_esdrasActionPerformed
 
     private void jobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobActionPerformed
-        selectBook("job");
+        selectBook("job",(JButton) evt.getSource());
     }//GEN-LAST:event_jobActionPerformed
 
     private void proverbiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_proverbiosActionPerformed
-        selectBook("proverbios");
+        selectBook("proverbios",(JButton) evt.getSource());
     }//GEN-LAST:event_proverbiosActionPerformed
 
     private void eclesiastesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eclesiastesActionPerformed
-        selectBook("eclesiastes");
+        selectBook("eclesiastes",(JButton) evt.getSource());
     }//GEN-LAST:event_eclesiastesActionPerformed
 
     private void reyes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reyes1ActionPerformed
-        selectBook("1_reyes");
+        selectBook("1_reyes",(JButton) evt.getSource());
     }//GEN-LAST:event_reyes1ActionPerformed
 
     private void reyes2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reyes2ActionPerformed
-        selectBook("2_reyes");
+        selectBook("2_reyes",(JButton) evt.getSource());
     }//GEN-LAST:event_reyes2ActionPerformed
 
     private void samuel1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_samuel1ActionPerformed
-        selectBook("1_samuel");
+        selectBook("1_samuel",(JButton) evt.getSource());
     }//GEN-LAST:event_samuel1ActionPerformed
 
     private void samuel2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_samuel2ActionPerformed
-        selectBook("2_samuel");
+        selectBook("2_samuel",(JButton) evt.getSource());
     }//GEN-LAST:event_samuel2ActionPerformed
 
     private void cronicas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cronicas1ActionPerformed
-        selectBook("1_cronicas");
+        selectBook("1_cronicas",(JButton) evt.getSource());
     }//GEN-LAST:event_cronicas1ActionPerformed
 
     private void isaiasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_isaiasActionPerformed
-        selectBook("isaias");
+        selectBook("isaias",(JButton) evt.getSource());
     }//GEN-LAST:event_isaiasActionPerformed
 
     private void jeremiasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jeremiasActionPerformed
-        selectBook("jeremias");
+        selectBook("jeremias",(JButton) evt.getSource());
     }//GEN-LAST:event_jeremiasActionPerformed
 
     private void cantaresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantaresActionPerformed
-        selectBook("cantares");
+        selectBook("cantares",(JButton) evt.getSource());
     }//GEN-LAST:event_cantaresActionPerformed
 
     private void lamentacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lamentacionesActionPerformed
-        selectBook("lamentaciones");
+        selectBook("lamentaciones",(JButton) evt.getSource());
     }//GEN-LAST:event_lamentacionesActionPerformed
 
     private void danielActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_danielActionPerformed
-        selectBook("daniel");
+        selectBook("daniel",(JButton) evt.getSource());
     }//GEN-LAST:event_danielActionPerformed
 
     private void ezequielActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ezequielActionPerformed
-        selectBook("ezequiel");
+        selectBook("ezequiel",(JButton) evt.getSource());
     }//GEN-LAST:event_ezequielActionPerformed
 
     private void oseasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oseasActionPerformed
-        selectBook("oseas");
+        selectBook("oseas",(JButton) evt.getSource());
     }//GEN-LAST:event_oseasActionPerformed
 
     private void amosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_amosActionPerformed
-        selectBook("amos");
+        selectBook("amos",(JButton) evt.getSource());
     }//GEN-LAST:event_amosActionPerformed
 
     private void abdíasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abdíasActionPerformed
-        selectBook("abdias");
+        selectBook("abdias",(JButton) evt.getSource());
     }//GEN-LAST:event_abdíasActionPerformed
 
     private void joelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_joelActionPerformed
-        selectBook("joel");
+        selectBook("joel",(JButton) evt.getSource());
     }//GEN-LAST:event_joelActionPerformed
 
     private void jonasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jonasActionPerformed
-        selectBook("jonas");
+        selectBook("jonas",(JButton) evt.getSource());
     }//GEN-LAST:event_jonasActionPerformed
 
     private void nahumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nahumActionPerformed
-        selectBook("nahum");
+        selectBook("nahum",(JButton) evt.getSource());
     }//GEN-LAST:event_nahumActionPerformed
 
     private void habacucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_habacucActionPerformed
-        selectBook("habacuc");
+        selectBook("habacuc",(JButton) evt.getSource());
     }//GEN-LAST:event_habacucActionPerformed
 
     private void miqueasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miqueasActionPerformed
-        selectBook("miqueas");
+        selectBook("miqueas",(JButton) evt.getSource());
     }//GEN-LAST:event_miqueasActionPerformed
 
     private void sofoniasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sofoniasActionPerformed
-        selectBook("sofonias");
+        selectBook("sofonias",(JButton) evt.getSource());
     }//GEN-LAST:event_sofoniasActionPerformed
 
     private void mateoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mateoActionPerformed
-        selectBook("mateo");
+        selectBook("mateo",(JButton) evt.getSource());
     }//GEN-LAST:event_mateoActionPerformed
 
     private void hageoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hageoActionPerformed
-        selectBook("hageo");
+        selectBook("hageo",(JButton) evt.getSource());
     }//GEN-LAST:event_hageoActionPerformed
 
     private void zacariasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zacariasActionPerformed
-        selectBook("zacarias");
+        selectBook("zacarias",(JButton) evt.getSource());
     }//GEN-LAST:event_zacariasActionPerformed
 
     private void malaquiasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_malaquiasActionPerformed
-        selectBook("malaquias");
+        selectBook("malaquias",(JButton) evt.getSource());
     }//GEN-LAST:event_malaquiasActionPerformed
 
     private void hechosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hechosActionPerformed
-        selectBook("hechos");
+        selectBook("hechos",(JButton) evt.getSource());
     }//GEN-LAST:event_hechosActionPerformed
 
     private void marcosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marcosActionPerformed
-        selectBook("marcos");
+        selectBook("marcos",(JButton) evt.getSource());
     }//GEN-LAST:event_marcosActionPerformed
 
     private void lucasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lucasActionPerformed
-        selectBook("lucas");
+        selectBook("lucas",(JButton) evt.getSource());
     }//GEN-LAST:event_lucasActionPerformed
 
     private void juanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_juanActionPerformed
-        selectBook("juan");
+        selectBook("juan",(JButton) evt.getSource());
     }//GEN-LAST:event_juanActionPerformed
 
     private void efesiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_efesiosActionPerformed
-        selectBook("efesios");
+        selectBook("efesios",(JButton) evt.getSource());
     }//GEN-LAST:event_efesiosActionPerformed
 
     private void romanosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_romanosActionPerformed
-        selectBook("romanos");
+        selectBook("romanos",(JButton) evt.getSource());
     }//GEN-LAST:event_romanosActionPerformed
 
     private void corintios1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_corintios1ActionPerformed
-        selectBook("1_corintios");
+        selectBook("1_corintios",(JButton) evt.getSource());
     }//GEN-LAST:event_corintios1ActionPerformed
 
     private void galatasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_galatasActionPerformed
-        selectBook("galatas");
+        selectBook("galatas",(JButton) evt.getSource());
     }//GEN-LAST:event_galatasActionPerformed
 
     private void filipensesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filipensesActionPerformed
-        selectBook("filipenses");
+        selectBook("filipenses",(JButton) evt.getSource());
     }//GEN-LAST:event_filipensesActionPerformed
 
     private void colosensesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_colosensesActionPerformed
-        selectBook("colosenses");
+        selectBook("colosenses",(JButton) evt.getSource());
     }//GEN-LAST:event_colosensesActionPerformed
 
     private void corintios2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_corintios2ActionPerformed
-        selectBook("2_corintios");
+        selectBook("2_corintios",(JButton) evt.getSource());
     }//GEN-LAST:event_corintios2ActionPerformed
 
     private void tesalonicenses1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tesalonicenses1ActionPerformed
-        selectBook("1_tesalonicenses");
+        selectBook("1_tesalonicenses",(JButton) evt.getSource());
     }//GEN-LAST:event_tesalonicenses1ActionPerformed
 
     private void filemonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filemonActionPerformed
-        selectBook("filemon");
+        selectBook("filemon",(JButton) evt.getSource());
     }//GEN-LAST:event_filemonActionPerformed
 
     private void santiagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_santiagoActionPerformed
-        selectBook("santiago");
+        selectBook("santiago",(JButton) evt.getSource());
     }//GEN-LAST:event_santiagoActionPerformed
 
     private void hebreosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hebreosActionPerformed
-        selectBook("hebreos");
+        selectBook("hebreos",(JButton) evt.getSource());
     }//GEN-LAST:event_hebreosActionPerformed
 
     private void tesalonicenses2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tesalonicenses2ActionPerformed
-        selectBook("2_tesalonicenses");
+        selectBook("2_tesalonicenses",(JButton) evt.getSource());
     }//GEN-LAST:event_tesalonicenses2ActionPerformed
 
     private void timoteo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_timoteo1ActionPerformed
-        selectBook("1_timoteo");
+        selectBook("1_timoteo",(JButton) evt.getSource());
     }//GEN-LAST:event_timoteo1ActionPerformed
 
     private void titoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_titoActionPerformed
-        selectBook("tito");
+        selectBook("tito",(JButton) evt.getSource());
     }//GEN-LAST:event_titoActionPerformed
 
     private void timoteo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_timoteo2ActionPerformed
-        selectBook("2_timoteo");
+        selectBook("2_timoteo",(JButton) evt.getSource());
     }//GEN-LAST:event_timoteo2ActionPerformed
 
     private void pedro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pedro1ActionPerformed
-        selectBook("1_pedro");
+        selectBook("1_pedro",(JButton) evt.getSource());
     }//GEN-LAST:event_pedro1ActionPerformed
 
     private void pedro2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pedro2ActionPerformed
-        selectBook("2_pedro");
+        selectBook("2_pedro",(JButton) evt.getSource());
     }//GEN-LAST:event_pedro2ActionPerformed
 
     private void juan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_juan1ActionPerformed
-        selectBook("1_juan");
+        selectBook("1_juan",(JButton) evt.getSource());
     }//GEN-LAST:event_juan1ActionPerformed
 
     private void juan2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_juan2ActionPerformed
-        selectBook("2_juan");
+        selectBook("2_juan",(JButton) evt.getSource());
     }//GEN-LAST:event_juan2ActionPerformed
 
     private void juan3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_juan3ActionPerformed
-        selectBook("3_juan");
+        selectBook("3_juan",(JButton) evt.getSource());
     }//GEN-LAST:event_juan3ActionPerformed
 
     private void judasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_judasActionPerformed
-        selectBook("judas");
+        selectBook("judas",(JButton) evt.getSource());
     }//GEN-LAST:event_judasActionPerformed
 
     private void apocalipsisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apocalipsisActionPerformed
-        selectBook("apocalipsis");
+        selectBook("apocalipsis",(JButton) evt.getSource());
     }//GEN-LAST:event_apocalipsisActionPerformed
 
     private void c40ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c40ActionPerformed
@@ -5889,213 +6508,171 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_c149ActionPerformed
 
     private void v16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v16ActionPerformed
-        // TODO add your handling code here:
+        selectVerse((JToggleButton) evt.getSource());
     }//GEN-LAST:event_v16ActionPerformed
 
     private void v24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v24ActionPerformed
-        // TODO add your handling code here:
+        selectVerse((JToggleButton) evt.getSource());
     }//GEN-LAST:event_v24ActionPerformed
 
     private void v28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v28ActionPerformed
-        // TODO add your handling code here:
+        selectVerse((JToggleButton) evt.getSource());
     }//GEN-LAST:event_v28ActionPerformed
 
     private void v31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v31ActionPerformed
-        // Obtener el texto biblico con el libro, capitulo y versiculo seleccionado        
-        String preview;
-        String finalPath;        
-        
-        if (v31.isSelected()){
-            verseSelected.setText("31");  
-            preview = bookSelected.getText() + " " + chapterSelected.getText() + ":" + verseSelected.getText() + "\n";
-            preview += biblicVersion + "\n";
-            
-            preview += verseSelected.getText() + " ";
-            preview += printBiblicText(bookSelected.getText().toLowerCase(), chapterSelected.getText(), verseSelected.getText());
-            preview = formatText(preview);
-            previewText.setText(preview);
-                        
-        } else { previewText.setText(""); } 
+        selectVerse((JToggleButton) evt.getSource());
     }//GEN-LAST:event_v31ActionPerformed
 
     private void v39ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v39ActionPerformed
-        // TODO add your handling code here:
+        selectVerse((JToggleButton) evt.getSource());
     }//GEN-LAST:event_v39ActionPerformed
 
     private void v47ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v47ActionPerformed
-        // TODO add your handling code here:
+        selectVerse((JToggleButton) evt.getSource());
     }//GEN-LAST:event_v47ActionPerformed
 
     private void v51ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v51ActionPerformed
-        // TODO add your handling code here:
+        selectVerse((JToggleButton) evt.getSource());
     }//GEN-LAST:event_v51ActionPerformed
 
     private void v54ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v54ActionPerformed
-        // TODO add your handling code here:
+        selectVerse((JToggleButton) evt.getSource());
     }//GEN-LAST:event_v54ActionPerformed
 
     private void v58ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v58ActionPerformed
-        // TODO add your handling code here:
+        selectVerse((JToggleButton) evt.getSource());
     }//GEN-LAST:event_v58ActionPerformed
 
     private void v62ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v62ActionPerformed
-        // TODO add your handling code here:
+        selectVerse((JToggleButton) evt.getSource());
     }//GEN-LAST:event_v62ActionPerformed
 
     private void v66ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v66ActionPerformed
-        // TODO add your handling code here:
+        selectVerse((JToggleButton) evt.getSource());
     }//GEN-LAST:event_v66ActionPerformed
 
     private void v69ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v69ActionPerformed
-        // TODO add your handling code here:
+        selectVerse((JToggleButton) evt.getSource());
     }//GEN-LAST:event_v69ActionPerformed
 
     private void v73ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v73ActionPerformed
-        // TODO add your handling code here:
+        selectVerse((JToggleButton) evt.getSource());
     }//GEN-LAST:event_v73ActionPerformed
 
     private void v77ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v77ActionPerformed
-        // TODO add your handling code here:
+        selectVerse((JToggleButton) evt.getSource());
     }//GEN-LAST:event_v77ActionPerformed
 
     private void v81ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v81ActionPerformed
-        // TODO add your handling code here:
+        selectVerse((JToggleButton) evt.getSource());
     }//GEN-LAST:event_v81ActionPerformed
 
     private void v84ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v84ActionPerformed
-        // TODO add your handling code here:
+        selectVerse((JToggleButton) evt.getSource());
     }//GEN-LAST:event_v84ActionPerformed
 
     private void v88ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v88ActionPerformed
-        // TODO add your handling code here:
+        selectVerse((JToggleButton) evt.getSource());
     }//GEN-LAST:event_v88ActionPerformed
 
     private void v92ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v92ActionPerformed
-        // TODO add your handling code here:
+        selectVerse((JToggleButton) evt.getSource());
     }//GEN-LAST:event_v92ActionPerformed
 
     private void v96ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v96ActionPerformed
-        // TODO add your handling code here:
+        selectVerse((JToggleButton) evt.getSource());
     }//GEN-LAST:event_v96ActionPerformed
 
     private void v99ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v99ActionPerformed
-        // TODO add your handling code here:
+        selectVerse((JToggleButton) evt.getSource());
     }//GEN-LAST:event_v99ActionPerformed
 
     private void v103ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v103ActionPerformed
-        // TODO add your handling code here:
+        selectVerse((JToggleButton) evt.getSource());
     }//GEN-LAST:event_v103ActionPerformed
 
     private void v107ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v107ActionPerformed
-        // TODO add your handling code here:
+        selectVerse((JToggleButton) evt.getSource());
     }//GEN-LAST:event_v107ActionPerformed
 
     private void v111ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v111ActionPerformed
-        // TODO add your handling code here:
+        selectVerse((JToggleButton) evt.getSource());
     }//GEN-LAST:event_v111ActionPerformed
 
     private void v114ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v114ActionPerformed
-        // TODO add your handling code here:
+        selectVerse((JToggleButton) evt.getSource());
     }//GEN-LAST:event_v114ActionPerformed
 
     private void v118ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v118ActionPerformed
-        // TODO add your handling code here:
+        selectVerse((JToggleButton) evt.getSource());
     }//GEN-LAST:event_v118ActionPerformed
 
     private void v123ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v123ActionPerformed
-        // TODO add your handling code here:
+        selectVerse((JToggleButton) evt.getSource());
     }//GEN-LAST:event_v123ActionPerformed
 
     private void v127ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v127ActionPerformed
-        // TODO add your handling code here:
+        selectVerse((JToggleButton) evt.getSource());
     }//GEN-LAST:event_v127ActionPerformed
 
     private void v131ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v131ActionPerformed
-        // TODO add your handling code here:
+        selectVerse((JToggleButton) evt.getSource());
     }//GEN-LAST:event_v131ActionPerformed
 
     private void v135ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v135ActionPerformed
-        // TODO add your handling code here:
+        selectVerse((JToggleButton) evt.getSource());
     }//GEN-LAST:event_v135ActionPerformed
 
     private void v138ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v138ActionPerformed
-        // TODO add your handling code here:
+        selectVerse((JToggleButton) evt.getSource());
     }//GEN-LAST:event_v138ActionPerformed
 
     private void v142ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v142ActionPerformed
-        // TODO add your handling code here:
+        selectVerse((JToggleButton) evt.getSource());
     }//GEN-LAST:event_v142ActionPerformed
 
     private void v146ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v146ActionPerformed
-        // TODO add your handling code here:
+        selectVerse((JToggleButton) evt.getSource());
     }//GEN-LAST:event_v146ActionPerformed
 
     private void v150ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v150ActionPerformed
-        // TODO add your handling code here:
+        selectVerse((JToggleButton) evt.getSource());
     }//GEN-LAST:event_v150ActionPerformed
 
     private void v153ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v153ActionPerformed
-        // TODO add your handling code here:
+        selectVerse((JToggleButton) evt.getSource());
     }//GEN-LAST:event_v153ActionPerformed
 
     private void v157ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v157ActionPerformed
-        // TODO add your handling code here:
+        selectVerse((JToggleButton) evt.getSource());
     }//GEN-LAST:event_v157ActionPerformed
 
     private void v161ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v161ActionPerformed
-        // TODO add your handling code here:
+        selectVerse((JToggleButton) evt.getSource());
     }//GEN-LAST:event_v161ActionPerformed
 
     private void v165ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v165ActionPerformed
-        // TODO add your handling code here:
+        selectVerse((JToggleButton) evt.getSource());
     }//GEN-LAST:event_v165ActionPerformed
 
     private void v167ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v167ActionPerformed
-        // TODO add your handling code here:
+        selectVerse((JToggleButton) evt.getSource());
     }//GEN-LAST:event_v167ActionPerformed
 
     private void v171ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v171ActionPerformed
-        // TODO add your handling code here:
+        selectVerse((JToggleButton) evt.getSource());
     }//GEN-LAST:event_v171ActionPerformed
 
     private void v175ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v175ActionPerformed
-        // TODO add your handling code here:
+        selectVerse((JToggleButton) evt.getSource());
     }//GEN-LAST:event_v175ActionPerformed
 
     private void v15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v15ActionPerformed
-        // Obtener el texto biblico con el libro, capitulo y versiculo seleccionado        
-        String preview;
-        String finalPath;
-                
-        if (v15.isSelected()){
-            verseSelected.setText("15");  
-            preview = bookSelected.getText() + " " + chapterSelected.getText() + ":" + verseSelected.getText() + "\n";
-            preview += biblicVersion + "\n";
-            
-            preview += verseSelected.getText() + " ";
-            preview += printBiblicText(bookSelected.getText().toLowerCase(), chapterSelected.getText(), verseSelected.getText());
-            preview = formatText(preview);
-            previewText.setText(preview);            
-            
-        } else { previewText.setText(""); }                              
+        selectVerse((JToggleButton) evt.getSource());                           
     }//GEN-LAST:event_v15ActionPerformed
 
     private void v26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v26ActionPerformed
-         // Obtener el texto biblico con el libro, capitulo y versiculo seleccionado        
-        String preview;
-        String finalPath;
-                
-        if (v26.isSelected()){
-            verseSelected.setText("26");  
-            preview = bookSelected.getText() + " " + chapterSelected.getText() + ":" + verseSelected.getText() + "\n";
-            preview += biblicVersion + "\n";
-            
-            preview += verseSelected.getText() + " ";
-            preview += printBiblicText(bookSelected.getText().toLowerCase(), chapterSelected.getText(), verseSelected.getText());
-            preview = formatText(preview);
-            previewText.setText(preview);
-            
-        } else { previewText.setText(""); } 
+        selectVerse((JToggleButton) evt.getSource());
     }//GEN-LAST:event_v26ActionPerformed
 
     private void c15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c15ActionPerformed
@@ -6103,11 +6680,13 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_c15ActionPerformed
 
     private void finalOutput3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalOutput3ActionPerformed
-        previewText.setText(applyLimitRows(previewText.getText()));
+        String finalPath = ruta + "salida3.txt";                      
+        crearArchivo(previewText.getText(), finalPath);      
     }//GEN-LAST:event_finalOutput3ActionPerformed
 
     private void finalOutput4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalOutput4ActionPerformed
-        // TODO add your handling code here:
+        String finalPath = ruta + "salida4.txt";                      
+        crearArchivo(previewText.getText(), finalPath);      
     }//GEN-LAST:event_finalOutput4ActionPerformed
 
     private void v2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v2ActionPerformed
@@ -6123,7 +6702,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_c24ActionPerformed
 
     private void v14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v14ActionPerformed
-        //selectVerse("14",v14);
+        selectVerse((JToggleButton) evt.getSource());
     }//GEN-LAST:event_v14ActionPerformed
 
     private void c150ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c150ActionPerformed
@@ -6131,7 +6710,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_c150ActionPerformed
 
     private void v176ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v176ActionPerformed
-        //selectVerse("176",v176);
+        selectVerse((JToggleButton) evt.getSource());
     }//GEN-LAST:event_v176ActionPerformed
 
     private void c2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c2ActionPerformed
@@ -6499,7 +7078,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_c146ActionPerformed
 
     private void v128ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v128ActionPerformed
-        // TODO add your handling code here:
+        selectVerse((JToggleButton) evt.getSource());
     }//GEN-LAST:event_v128ActionPerformed
 
     private void v3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v3ActionPerformed
@@ -6507,32 +7086,508 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_v3ActionPerformed
 
     private void v4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v4ActionPerformed
-        // TODO add your handling code here:
+        selectVerse((JToggleButton) evt.getSource());
     }//GEN-LAST:event_v4ActionPerformed
 
     private void v5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v5ActionPerformed
-        // TODO add your handling code here:
+        selectVerse((JToggleButton) evt.getSource());
     }//GEN-LAST:event_v5ActionPerformed
 
     private void v7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v7ActionPerformed
-        // TODO add your handling code here:
+        selectVerse((JToggleButton) evt.getSource());
     }//GEN-LAST:event_v7ActionPerformed
 
     private void v9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v9ActionPerformed
-        // TODO add your handling code here:
+        selectVerse((JToggleButton) evt.getSource());
     }//GEN-LAST:event_v9ActionPerformed
 
     private void v10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v10ActionPerformed
-        // TODO add your handling code here:
+        selectVerse((JToggleButton) evt.getSource());
     }//GEN-LAST:event_v10ActionPerformed
 
     private void v11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v11ActionPerformed
-        // TODO add your handling code here:
+        selectVerse((JToggleButton) evt.getSource());
     }//GEN-LAST:event_v11ActionPerformed
 
     private void v12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v12ActionPerformed
-        // TODO add your handling code here:
+        selectVerse((JToggleButton) evt.getSource());
     }//GEN-LAST:event_v12ActionPerformed
+
+    private void v13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v13ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v13ActionPerformed
+
+    private void v17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v17ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v17ActionPerformed
+
+    private void v18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v18ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v18ActionPerformed
+
+    private void v19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v19ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v19ActionPerformed
+
+    private void v20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v20ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v20ActionPerformed
+
+    private void v21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v21ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v21ActionPerformed
+
+    private void v22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v22ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v22ActionPerformed
+
+    private void v23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v23ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v23ActionPerformed
+
+    private void v25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v25ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v25ActionPerformed
+
+    private void v27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v27ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v27ActionPerformed
+
+    private void v29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v29ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v29ActionPerformed
+
+    private void v30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v30ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v30ActionPerformed
+
+    private void v32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v32ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v32ActionPerformed
+
+    private void v33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v33ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v33ActionPerformed
+
+    private void v34ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v34ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v34ActionPerformed
+
+    private void v36ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v36ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v36ActionPerformed
+
+    private void v35ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v35ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v35ActionPerformed
+
+    private void v37ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v37ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v37ActionPerformed
+
+    private void v38ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v38ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v38ActionPerformed
+
+    private void v40ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v40ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v40ActionPerformed
+
+    private void v41ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v41ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v41ActionPerformed
+
+    private void v42ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v42ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v42ActionPerformed
+
+    private void v43ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v43ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v43ActionPerformed
+
+    private void v44ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v44ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v44ActionPerformed
+
+    private void v45ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v45ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v45ActionPerformed
+
+    private void v46ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v46ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v46ActionPerformed
+
+    private void v48ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v48ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v48ActionPerformed
+
+    private void v49ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v49ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v49ActionPerformed
+
+    private void v50ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v50ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v50ActionPerformed
+
+    private void v52ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v52ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v52ActionPerformed
+
+    private void v53ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v53ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v53ActionPerformed
+
+    private void v55ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v55ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v55ActionPerformed
+
+    private void v56ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v56ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v56ActionPerformed
+
+    private void v57ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v57ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v57ActionPerformed
+
+    private void v59ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v59ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v59ActionPerformed
+
+    private void v60ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v60ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v60ActionPerformed
+
+    private void v61ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v61ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v61ActionPerformed
+
+    private void v63ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v63ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v63ActionPerformed
+
+    private void v64ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v64ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v64ActionPerformed
+
+    private void v65ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v65ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v65ActionPerformed
+
+    private void v67ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v67ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v67ActionPerformed
+
+    private void v68ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v68ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v68ActionPerformed
+
+    private void v70ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v70ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v70ActionPerformed
+
+    private void v71ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v71ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v71ActionPerformed
+
+    private void v72ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v72ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v72ActionPerformed
+
+    private void v74ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v74ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v74ActionPerformed
+
+    private void v75ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v75ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v75ActionPerformed
+
+    private void v76ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v76ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v76ActionPerformed
+
+    private void v78ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v78ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v78ActionPerformed
+
+    private void v79ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v79ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v79ActionPerformed
+
+    private void v80ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v80ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v80ActionPerformed
+
+    private void v82ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v82ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v82ActionPerformed
+
+    private void v83ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v83ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v83ActionPerformed
+
+    private void v85ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v85ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v85ActionPerformed
+
+    private void v86ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v86ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v86ActionPerformed
+
+    private void v87ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v87ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v87ActionPerformed
+
+    private void v89ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v89ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v89ActionPerformed
+
+    private void v90ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v90ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v90ActionPerformed
+
+    private void v91ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v91ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v91ActionPerformed
+
+    private void v93ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v93ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v93ActionPerformed
+
+    private void v94ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v94ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v94ActionPerformed
+
+    private void v95ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v95ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v95ActionPerformed
+
+    private void v97ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v97ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v97ActionPerformed
+
+    private void v98ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v98ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v98ActionPerformed
+
+    private void v100ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v100ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v100ActionPerformed
+
+    private void v101ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v101ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v101ActionPerformed
+
+    private void v102ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v102ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v102ActionPerformed
+
+    private void v104ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v104ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v104ActionPerformed
+
+    private void v105ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v105ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v105ActionPerformed
+
+    private void v106ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v106ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v106ActionPerformed
+
+    private void v108ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v108ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v108ActionPerformed
+
+    private void v109ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v109ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v109ActionPerformed
+
+    private void v110ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v110ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v110ActionPerformed
+
+    private void v112ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v112ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v112ActionPerformed
+
+    private void v113ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v113ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v113ActionPerformed
+
+    private void v115ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v115ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v115ActionPerformed
+
+    private void v116ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v116ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v116ActionPerformed
+
+    private void v117ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v117ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v117ActionPerformed
+
+    private void v119ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v119ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v119ActionPerformed
+
+    private void v120ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v120ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v120ActionPerformed
+
+    private void v121ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v121ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v121ActionPerformed
+
+    private void v122ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v122ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v122ActionPerformed
+
+    private void v124ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v124ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v124ActionPerformed
+
+    private void v125ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v125ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v125ActionPerformed
+
+    private void v126ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v126ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v126ActionPerformed
+
+    private void v129ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v129ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v129ActionPerformed
+
+    private void v130ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v130ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v130ActionPerformed
+
+    private void v132ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v132ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v132ActionPerformed
+
+    private void v133ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v133ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v133ActionPerformed
+
+    private void v134ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v134ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v134ActionPerformed
+
+    private void v136ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v136ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v136ActionPerformed
+
+    private void v137ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v137ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v137ActionPerformed
+
+    private void v139ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v139ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v139ActionPerformed
+
+    private void v140ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v140ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v140ActionPerformed
+
+    private void v141ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v141ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v141ActionPerformed
+
+    private void v143ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v143ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v143ActionPerformed
+
+    private void v144ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v144ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v144ActionPerformed
+
+    private void v145ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v145ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v145ActionPerformed
+
+    private void v147ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v147ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v147ActionPerformed
+
+    private void v148ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v148ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v148ActionPerformed
+
+    private void v149ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v149ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v149ActionPerformed
+
+    private void v166ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v166ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v166ActionPerformed
+
+    private void v168ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v168ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v168ActionPerformed
+
+    private void v169ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v169ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v169ActionPerformed
+
+    private void v170ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v170ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v170ActionPerformed
+
+    private void v172ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v172ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v172ActionPerformed
+
+    private void v173ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v173ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v173ActionPerformed
+
+    private void v174ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v174ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v174ActionPerformed
+
+    private void v164ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v164ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v164ActionPerformed
+
+    private void v163ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v163ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v163ActionPerformed
+
+    private void v162ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v162ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v162ActionPerformed
+
+    private void v160ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v160ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v160ActionPerformed
+
+    private void v159ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v159ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v159ActionPerformed
+
+    private void v158ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v158ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v158ActionPerformed
+
+    private void v156ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v156ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v156ActionPerformed
+
+    private void v155ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v155ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v155ActionPerformed
+
+    private void v154ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v154ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v154ActionPerformed
+
+    private void v152ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v152ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v152ActionPerformed
+
+    private void v151ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_v151ActionPerformed
+        selectVerse((JToggleButton) evt.getSource());
+    }//GEN-LAST:event_v151ActionPerformed
         
     /* > = > = MODULO PROCESAMIENTO DE TEXTO = < = < */
     
@@ -6621,7 +7676,7 @@ public class Principal extends javax.swing.JFrame {
     }
     
     // Método que toma un versículo en un solo renglón extenso, y le aplica saltos de línea 
-    // de acuerdo a un límite definitible desde la UI por el usuario
+    // de acuerdo a un límite definible desde la UI por el usuario
     public static String applyLimitRows(String verse) {
 
       // Verso resultante
@@ -6644,6 +7699,78 @@ public class Principal extends javax.swing.JFrame {
       return result;                
     }
     
+    
+    /* Metodo que determina en cual de las siguientes opciones se encuentra
+       el rango de versiculos seleccionados:
+    
+        1. Secuencia in-interrumpida de numeros: [1,2,3,4,5] , [1], [78,79]
+        2. Secuencia interrumpida de numeros [1,2,6,7,10] , [1,4], [1,2,6,7,8,20]
+    
+        Retorno: String compuesto de las secuencias con el numero menor un guion - y luego el numero mayor para el primer caso
+                 Para el segundo caso, los versiculos separados por coma.
+        
+        Ejemplo:  Para la entrada: [1,2,6,7,8,9,20,23,25]
+        Debe retornar: 1-2,6-9,20,23,25
+    */
+    public static String getVersesRange() {
+        
+        int currentValue = currentVerses.get(0);
+        String result = currentVerses.get(0).toString();
+
+        // Comienza asumiendo que no hay una secuencia ordenada
+        boolean continuousSequence = false;
+
+        // Se requiere que el arrayList currentVerses este ORDENADO. (Esto se da por sentado)
+        for (int i = 1; i < currentVerses.size(); i++) {
+            
+            // Continua con la secuencia
+            if (currentVerses.get(i) == currentValue+1){
+                if (continuousSequence){                    
+                   currentValue = currentVerses.get(i);
+                }
+                else {
+                   //continuousSequence = true;
+                   result += "-";
+                   currentValue = currentVerses.get(i);
+                   continuousSequence = true;
+                }
+            }
+            
+            // Se interrumpe la secuencia
+            else {
+                if (continuousSequence){     
+                   result += currentValue;
+                   result += ",";
+                   result += currentVerses.get(i).toString();
+                   continuousSequence = false;
+                   currentValue = currentVerses.get(i);
+                }
+                else {
+                   //continuousSequence = true;
+                   result += ",";
+                   currentValue = currentVerses.get(i);
+                   result += currentVerses.get(i).toString();                                    
+                   continuousSequence = false;
+                }
+            }
+               
+        } 
+        
+        // Si habia una secuencia inconclusa, se concluye
+        if (continuousSequence){                                
+            result += currentValue;
+        }
+        
+        // Si el ultimo versiculo no venia con una secuencia, se le debe quitar la ,
+        else {            
+            result = result.substring(0, result.length());           
+        }
+      
+        return result;
+        
+    }
+    
+    
     // Metodo auxiliar para validar si un caracter es nunerico
     public static boolean esNumerico(String caracter) {
         
@@ -6656,49 +7783,7 @@ public class Principal extends javax.swing.JFrame {
         
     }
     
-    
-    
-    public static String peticionHttpGet(String urlParaVisitar, String apiKey) throws Exception {
-        // Esto es lo que vamos a devolver
-        StringBuilder resultado = new StringBuilder();
-        // Crear un objeto de tipo URL
-        URL url = new URL(urlParaVisitar);
-
-        // Abrir la conexión e indicar que será de tipo GET
-        HttpURLConnection conexion = (HttpURLConnection) url.openConnection();
-        conexion.setRequestMethod("GET");
-        conexion.setRequestProperty("api-key", apiKey);
-                                
-        // Búferes para leer
-        BufferedReader rd = new BufferedReader(new InputStreamReader(conexion.getInputStream()));
-        String linea;
-                
-        // Mientras el BufferedReader se pueda leer, agregar contenido a resultado
-        while ((linea = rd.readLine()) != null) {
-          resultado.append(linea);
-        }
-        // Cerrar el BufferedReader
-        rd.close();
-        // Regresar resultado, pero como cadena, no como StringBuilder
-        return resultado.toString();
-    }
-    
-    public static String solicitarPasaje(String versionBiblia, String citaBiblica) throws Exception {
-        
-        // OBTENER TEXTOS BIBLICOS DE WEB SERVICE
-      
-        // String urlBibles = "https://api.scripture.api.bible/v1/bibles/" + versionBiblia;
-        
-        String urlPassage = "https://api.scripture.api.bible/v1/bibles/" + versionBiblia +
-        "/passages/" + citaBiblica + 
-        "?content-type=text&include-notes=false&include-titles=true&include-chapter-numbers=true&include-verse-numbers=true&include-verse-spans=true&use-org-id=false";
-
-        String apiKey = "1d0a6c3e53bad92445ddc866aa62bfd4";      
-        String resultText = peticionHttpGet(urlPassage,apiKey);
-
-        return resultText;
-        
-    }
+       
                 
     /* > = > = MODULO DE INTERFAZ GRAFICA = < = < */
                
@@ -6720,13 +7805,14 @@ public class Principal extends javax.swing.JFrame {
     
     
     // Metodo que se ejecuta cuando se da click en un libro
-    public static void selectBook(String bookName) {       
+    public static void selectBook(String bookName, JButton button) {       
                 
         int countChapters = countChapters(bookName);
         for (int i = 0; i < countChapters; i++) chapters.get(i).setVisible(true);       
         for (int i = countChapters; i < chapters.size(); i++) chapters.get(i).setVisible(false);
         
-        bookSelected.setText(bookName);        
+        bookSelected.setText(bookName);   
+        displayBook = button.getText();
         biblic_panel.setSelectedComponent(chapter);                                
     } 
     
@@ -6736,31 +7822,71 @@ public class Principal extends javax.swing.JFrame {
         // Obtener la cantidad de versiculos del capitulo 1 dado el nombre del libro                 
         int countVerses = countVerses(bookSelected.getText().toLowerCase(), chapterNumber);
         
-        for (int i = 0; i < countVerses; i++) verses.get(i).setVisible(true);       
+        for (int i = 0; i < countVerses; i++){
+            verses.get(i).setVisible(true);
+            verses.get(i).setSelected(false);
+        }       
         for (int i = countVerses; i < verses.size(); i++) verses.get(i).setVisible(false);                        
         
         chapterSelected.setText(chapterNumber);                        
-        biblic_panel.setSelectedComponent(verse);                               
+        biblic_panel.setSelectedComponent(verse);  
+        
+        
+        // Se limpian los versiculos escogidos anteriormente y el texto de vista previa
+        previewText.setText("");
+        currentVerses.clear();
     } 
     
-    // Metodo que se ejecuta cuando se da click en un capitulo
+    // Metodo que se ejecuta cuando se da click en un versículo
     public static void selectVerse(JToggleButton button) {       
                           
         // Obtener el texto biblico con el libro, capitulo y versiculo seleccionado        
-        String preview;        
+        String preview;
+        String biblicFragment = "";
         
-        if (button.isSelected()){
-            verseSelected.setText(button.getText());            
+        // Se selecciona el versiculo
+        if (button.isSelected()){            
+            currentVerses.add(Integer.valueOf(button.getText()));                      
+             
+        // Se DESelecciona el versiculo
+        } else {             
+            currentVerses.remove(currentVerses.indexOf(Integer.valueOf(button.getText())));            
+        }                     
+           
+        // Se han deseleccionado todos los versículos
+        if (currentVerses.size() < 1 && !button.isSelected()){
+            previewText.setText("");                
+        }
+        
+        // Queda uno o más versículos seleccionados
+        else {
             
-            preview = bookSelected.getText() + " " + chapterSelected.getText() + ":" + verseSelected.getText() + "\n";
+            // Se ordena el arreglo
+            Collections.sort(currentVerses);
+            verseSelected.setText(getVersesRange()); 
+            
+            preview = displayBook + " " + chapterSelected.getText() + ":" + verseSelected.getText() + "\n";
             preview += biblicVersion + "\n";
+
+            // Se obtienen y concatenan los versículos seleccionados
+            for (int i = 0; i < currentVerses.size(); i++) {
+                biblicFragment += currentVerses.get(i).toString() + " ";
+                biblicFragment += printBiblicText
+                    (bookSelected.getText().toLowerCase(), chapterSelected.getText(), currentVerses.get(i).toString());
+                biblicFragment += " ";
+            }           
+
+            // Aplica saltos de línea según el límite dado por el usuario
+            biblicFragment = applyLimitRows(biblicFragment);
+            preview += biblicFragment;
             
-            preview += verseSelected.getText() + " ";
-            preview += applyLimitRows(printBiblicText(bookSelected.getText().toLowerCase(), chapterSelected.getText(), verseSelected.getText()));
+            // Se aplica el formato final (espaciados, saltos de línea y demás)
             preview = formatText(preview);
             previewText.setText(preview);
-                        
-        } else { previewText.setText(""); }                               
+
+        }
+        
+        //JOptionPane.showMessageDialog(null, button.getText());
     }     
     
     
@@ -6774,7 +7900,7 @@ public class Principal extends javax.swing.JFrame {
         String text;
         
         // = = = OBTENER EL LIBRO = = =
-        File folder = new File("src/assets/");    
+        File folder = new File("resources/assets/");    
         String pathFile = extractBook(bookName);       
         
         File file = new File(pathFile); 
@@ -6852,8 +7978,9 @@ public class Principal extends javax.swing.JFrame {
                                                      
             }
         } catch (IOException ex) {System.out.println("Error leyendo la linea");}
-        
-        return 0;                    
+               
+        // return 0;               
+        return verses;
     } 
     
     
@@ -6911,8 +8038,7 @@ public class Principal extends javax.swing.JFrame {
         chapter = line.substring(line.indexOf(",")+2,line.length());
 
         // Removemos el post-texto inutil
-        chapter = chapter.substring(0,chapter.indexOf(","));
-
+        chapter = chapter.substring(0,chapter.indexOf(","));        
         return chapter;
 
     }
@@ -6921,11 +8047,11 @@ public class Principal extends javax.swing.JFrame {
     // Retorna el path para acceder al archivo del libro
     public static String extractBook(String name) {                
 
-        File folder = new File("src/assets/");    
-        String pathFile = "src/assets/";
+        File folder = new File("resources/assets/");    
+        String pathFile = "resources/assets/";
         
         for (int i = 0; i < folder.listFiles().length; i++) {
-            if (folder.listFiles()[i].getName().contains(name))
+            if (folder.listFiles()[i].getName().replace(".txt", "").equals(name))
                 return pathFile += folder.listFiles()[i].getName();            
         }
         return null;
@@ -6964,8 +8090,13 @@ public class Principal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                              
+                                                             
                 new Principal().setVisible(true);                                                                                
+                //System.out.println(System.getProperty("file.encoding"));
+                //System.setProperty("file.encoding", "UTF-8");
+                //System.out.println(System.getProperty("file.encoding"));
+                
+                //System.out.println(System.getProperties());
                 
                 chapters.add(c1);
                 chapters.add(c2);
@@ -7309,24 +8440,8 @@ public class Principal extends javax.swing.JFrame {
                     StringSelection data = new StringSelection(result.getText());
                     clip.setContents(data, data); 
                 */
-                
-                
-                                                                              
-                // System.out.println(printBiblicText("2_timoteo", "3", "17"));
-                                                                               
-                
-                /* Parametros de ejemplo 
-                String reinaValera = "592420522e16049f-01";
-                String citaEjemplo = "ROM.12.1-ROM.12.4";
-                
-                // Llamado a la peticion del web service //
-                try {                    
-                    // System.out.println(solicitarPasaje(reinaValera,citaEjemplo));
-                    result.setText(solicitarPasaje(reinaValera,citaEjemplo));
-                } catch (Exception ex) {
-                    System.out.println("Ocurrio un error haciendo la peticion: ");
-                    ex.printStackTrace();
-                }*/
+                                                                                                              
+                // System.out.println(printBiblicText("2_timoteo", "3", "17"));                                                                                              
             }
         });
     }
@@ -7495,6 +8610,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel chapterLabel;
     private static javax.swing.JLabel chapterSelected;
     private javax.swing.JButton colosenses;
+    private javax.swing.JPanel config_panel;
     private javax.swing.JButton corintios1;
     private javax.swing.JButton corintios2;
     private javax.swing.JButton cronicas1;
@@ -7522,7 +8638,6 @@ public class Principal extends javax.swing.JFrame {
     private static javax.swing.JButton help;
     private javax.swing.JButton isaias;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jeremias;
     private javax.swing.JButton job;
@@ -7540,6 +8655,7 @@ public class Principal extends javax.swing.JFrame {
     private static javax.swing.JComboBox<String> limitRow;
     private javax.swing.JLabel limitRowLabel;
     private javax.swing.JLabel limitRowLabel1;
+    private javax.swing.JLabel limitRowLabel2;
     private javax.swing.JButton lucas;
     private javax.swing.JButton malaquias;
     private javax.swing.JButton marcos;
